@@ -28,11 +28,14 @@ Keep in mind that I'm **NOT** the author of most of the functionality: I only us
         cp ~/.emacs.d/samples/sample-.gnus.el ~/.gnus.el
 
 Now, open the `.emacs` and follow the comments to configure what you need. If you want to use Gnus with GMail, don't forget to edit the `.gnus.el` file.
-If you use the IDE support, you should byte-compile it for faster startup times:
+If you use the IDE support or Gnus with BBDB, you should byte-compile it for faster startup times:
 
         cd ~/.emacs.d/packages/cedet-1.1
         make
         cd ~/.emacs.d/packages/ecb-2.40
+        make
+        cd ~/.emacs.d/packages/bbdb-2.35
+        ./configure
         make
 
 ## Quick-and-dirty tutorial
@@ -44,8 +47,9 @@ If you use the IDE support, you should byte-compile it for faster startup times:
 * `f9` will enable/disable the IDE layout. Note that you can change your layout using the "Customize" option of emacs later.
 * `f5` will start the lisp (or clojure) repl. Take a look at `custom/lang-sbcl.el` or `custom/lang-clojure.el` for details. Note that clojure support depends on [Leiningen](http://leiningen.org/) to work.
 * `M-fN` will switch to the Nth environment. Only one environment can use the IDE layout.
+* In Gnus, `M-x bbdb-create` will create add a new contact to the database. Then, when editing mail, `TAB` will complete email addresses based on the contacts of the database.
 
-## Maintining
+## Maintaining
 
 If you want to use `emacs-devtools` as a starting point to your personal configuration, my personal recommendation is to **fork** this project for a private repository and change/add/remove want you want in the fork. This way, you can have a "backup" of your personal options AND will be able to fetch any new features or bug fixes from the original project.
 
