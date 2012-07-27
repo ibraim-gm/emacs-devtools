@@ -16,6 +16,7 @@
 ;; Better indentation
 (add-hook 'php-mode-hook
           (lambda ()
+            (setq require-final-newline t)
             (define-key php-mode-map (kbd "\r") 'newline-and-indent)))
 
 (provide 'lang-php)

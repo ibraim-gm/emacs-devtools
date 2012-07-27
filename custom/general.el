@@ -59,6 +59,11 @@
 (setq standard-indent 2)
 (setq-default indent-tabs-mode nil)
 
+;; Let's fix the whitespace issues: Remove every trailing whitespace on save
+;; and automatically add a trailing new line when a file is saved.
+(setq-default require-final-newline t)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Column marker in red.
 ;; Now, for each language that you want a column marker, you should use e.g:
 ;; -> (add-hook 'lisp-mode-hook
