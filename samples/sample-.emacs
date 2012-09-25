@@ -15,6 +15,7 @@
 ;; (require 'colors)       ; Custom color scheme, using color-theme package
 ;; (require 'ac)           ; Auto-complete support
 ;; (require 'custom-slime) ; Slime customizations
+;; (require 'cucumber)     ; cucumber (aka feature-mode) support
 ;; (require 'latex)        ; Configuration to use pdfLatex. Requires auctex.
 ;; (require 'ide)          ; The IDE, based on CEDET/ECB.
 ;; (require 'screen)       ; Screen module, needed for IDE support.

@@ -72,3 +72,7 @@ Emacs-DevTools use the following libraries:
 
 * ECB - Emacs Code Browser - 2.40
   URL: http://ecb.sourceforge.net
+
+* cucumber.el
+  Copyright (C) 2008 — 2011 Michael Klishin and other contributors
+  URL: https://github.com/michaelklishin/cucumber.el
