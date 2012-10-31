@@ -18,7 +18,9 @@
 
 ;; Load CEDET
 (load (expand-file-name "~/.emacs.d/packages/cedet-1.1/common/cedet.el"))
+(global-ede-mode 1)
 (semantic-load-enable-code-helpers)
+(global-srecode-minor-mode 1)
 
 ;; Use ECB autoloads
 (require 'ecb-autoloads)

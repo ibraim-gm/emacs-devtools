@@ -27,6 +27,7 @@
 ; (require 'lang-sbcl)
 ; (require 'lang-clojure)
 ; (require 'lang-php)
+; (require 'lang-c)
 
 ;; Save/Load custom variables in another file
 ;; If you want, you can use the file included in samples/sample-.emacs-custom
