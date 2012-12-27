@@ -3,3 +3,13 @@ backup/*
 auto-save-list/*
 swank/*
 bbdb
+*.elc
+*-compile-script
+*-make-script
+*~
+config.status
+config.log
+packages/bbdb-2.35/loadpath.el
+packages/bbdb-2.35/texinfo/bbdb.info
+tramp
+abbrev_defs
