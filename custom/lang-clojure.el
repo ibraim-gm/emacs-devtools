@@ -11,7 +11,10 @@
 (require 'clojure-mode)
 
 ;; Shortcut for starting a clojure process
-(global-set-key [f5] 'clojure-jack-in)
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (interactive)
+            (define-key clojure-mode-map [f5] 'clojure-jack-in)))
 
 ;; Rebind some keys to more sane values and enable test mode
 (add-hook 'slime-mode-hook

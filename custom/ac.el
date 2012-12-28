@@ -23,6 +23,9 @@
 
 (add-to-list 'ac-modes 'lisp-mode)
 (add-to-list 'ac-modes 'clojure-mode)
+(add-to-list 'ac-modes 'java-plus-mode)
+(add-to-list 'ac-modes 'android-mode)
+(add-to-list 'ac-modes 'ant-mode)
 
 ;; Since our color-theme is dark, we need to use more adequate colors
 (set-face-background 'ac-candidate-face "lightgray")

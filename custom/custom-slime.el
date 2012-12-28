@@ -13,6 +13,12 @@
 ;; Change to the correct location of quicklisp-slime-helper
 (defconst quicklisp-slime-helper-location "~/.quicklisp/slime-helper.el")
 
+;; Shortcut to start slime
+(add-hook 'lisp-mode-hook
+          (lambda ()
+            (interactive)
+            (define-key lisp-mode-map 'slime)))
+
 ;; Make sure auto-complete is working on the repl
 (add-hook 'slime-repl-mode-hook
           (lambda ()
@@ -34,7 +40,6 @@
   (load (expand-file-name quicklisp-slime-helper-location))
   (require 'slime)
   (setq slime-net-coding-system 'utf-8-unix)
-  (slime-setup '(slime-fancy slime-asdf))
-  (global-set-key [f5] 'slime))
+  (slime-setup '(slime-fancy slime-asdf)))
 
 (provide 'custom-slime)

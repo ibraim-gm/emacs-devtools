@@ -17,4 +17,9 @@
           (lambda ()
             (define-key java-mode-map (kbd "\r") 'newline-and-indent)))
 
+(ant-bind* "<f5>"   'compile
+           "<C-f5>" 'jar
+           "<f6>"   'run
+           "<C-f6>" 'test)
+
 (provide 'lang-java)
