@@ -76,3 +76,7 @@ Emacs-DevTools use the following libraries:
 * cucumber.el
   Copyright (C) 2008 — 2011 Michael Klishin and other contributors
   URL: https://github.com/michaelklishin/cucumber.el
+
+* Java Mode Plus
+  'Java Mode Plus' is develop and maintained by Christopher Wellons
+  URL: https://github.com/skeeto/emacs-java
