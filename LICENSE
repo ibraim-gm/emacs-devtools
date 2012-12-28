@@ -80,3 +80,7 @@ Emacs-DevTools use the following libraries:
 * Java Mode Plus
   'Java Mode Plus' is develop and maintained by Christopher Wellons
   URL: https://github.com/skeeto/emacs-java
+
+* ant-mode
+  Copyright (C) 2012 Tony Graham and contributors
+  URL: https://github.com/tkg/ant-mode
