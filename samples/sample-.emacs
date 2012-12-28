@@ -24,10 +24,13 @@
 ;; the exception is clojure: if you enable clojure, you can't any other
 ;; lisp, since clojure NEEDS a different version of slime.
 
-; (require 'lang-sbcl)
-; (require 'lang-clojure)
-; (require 'lang-php)
-; (require 'lang-c)
+;; (require 'lang-sbcl)
+;; (require 'lang-clojure)
+;; (require 'lang-php)
+;; (require 'lang-c)
+;; (require 'lang-java)
+;; (require 'lang-ant)
+;; (require 'lang-android)
 
 ;; Save/Load custom variables in another file
 ;; If you want, you can use the file included in samples/sample-.emacs-custom

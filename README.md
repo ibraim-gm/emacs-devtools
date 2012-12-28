@@ -12,11 +12,14 @@ The next step was obvious: I cleaned and reorganized my configuration to make ev
 If you enable everything, you will have:
 
 * A custom (dark) color theme for your emacs. I find it much easier on the eyes than the standard white background.
-* Auto-complete (aka "Intellisense") support for Common Lisp and Clojure. You can implement/enable this functionality for other languages as well.
+* Auto-complete (aka "Intellisense") support for Common Lisp and Clojure, using the lisp process.
+* Auto-comple for other languges, using the content of the opened files of the same type.
+* Support for Java and Android (using ant for compilation). There is also a basic suport for ant XML editing.
 * Default configurations for latex use (requires [AUCTex](http://www.gnu.org/software/auctex/)).
 * Support for multiple "environments" inside your emacs.
 * IDE-like display of your buffers, with customizable layout.
 * An example of using Gnus with GMail.
+* Note that clojure support depends on [Leiningen](http://leiningen.org/) to work.
 
 Keep in mind that I'm **NOT** the author of most of the functionality: I only use the existing emacs libraries and package them together.
 
@@ -38,6 +41,8 @@ If you use the IDE support or Gnus with BBDB, you should byte-compile it for fas
         ./configure
         make
 
+Also, if you plan on using Java/Android, make sure everything is correctly installed in your path (namely, ant and the android-sdk path in the .emacs-custom file) before using these modes.
+
 ## Quick-and-dirty tutorial
 
 * You will probably want to change the font face or size. This can be done in `custom/general.el`.
@@ -45,9 +50,10 @@ If you use the IDE support or Gnus with BBDB, you should byte-compile it for fas
 * `C-f12` opens a shell (sh) buffer.
 * Latex mode will use pdflatex by default. Use `C-c C-c` to compile and `C-c C-v` to view.
 * `f9` will enable/disable the IDE layout. Note that you can change your layout using the "Customize" option of emacs later.
-* `f5` will start the lisp (or clojure) repl. Take a look at `custom/lang-sbcl.el` or `custom/lang-clojure.el` for details. Note that clojure support depends on [Leiningen](http://leiningen.org/) to work.
 * `M-fN` will switch to the Nth environment. Only one environment can use the IDE layout.
 * In Gnus, `M-x bbdb-create` will create add a new contact to the database. Then, when editing mail, `TAB` will complete email addresses based on the contacts of the database.
+* `f5` has different meanings depending on the file. For lisp/clojure, this starts the REPL. For Java, it executes `ant compile` and for Android `ant debug`.
+* There are some extra keys for Java and Android mode for testing, running the emulator, etc. For more information, take a look at `custom/lang-java.el` or `custom/lang-android.el` to see all of the defined shortcuts.
 
 ## Maintaining
 
