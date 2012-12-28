@@ -84,3 +84,7 @@ Emacs-DevTools use the following libraries:
 * ant-mode
   Copyright (C) 2012 Tony Graham and contributors
   URL: https://github.com/tkg/ant-mode
+
+* android-mode
+  Copyright (C) 2009-2012 R.W van 't Veer and contributors
+  URL: https://github.com/remvee/android-mode
