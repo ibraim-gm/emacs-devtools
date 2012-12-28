@@ -88,3 +88,8 @@ Emacs-DevTools use the following libraries:
 * android-mode
   Copyright (C) 2009-2012 R.W van 't Veer and contributors
   URL: https://github.com/remvee/android-mode
+
+* Yasnippet
+  Copyright (C) 2008-2012 Free Software Foundation, Inc.
+  by pluskid <pluskid@gmail.com>,  João Távora <joaotavora@gmail.com>
+  URL: http://github.com/capitaomorte/yasnippet

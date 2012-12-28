@@ -15,6 +15,7 @@ If you enable everything, you will have:
 * Auto-complete (aka "Intellisense") support for Common Lisp and Clojure, using the lisp process.
 * Auto-comple for other languges, using the content of the opened files of the same type.
 * Support for Java and Android (using ant for compilation). There is also a basic suport for ant XML editing.
+* [Yasnippet](https://github.com/capitaomorte/yasnippet) support.
 * Default configurations for latex use (requires [AUCTex](http://www.gnu.org/software/auctex/)).
 * Support for multiple "environments" inside your emacs.
 * IDE-like display of your buffers, with customizable layout.

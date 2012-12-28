@@ -11,14 +11,15 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/3rd-party"))
 
 ;; Configuration options. Activate the ones you want.
-;; (require 'general)      ; General configurations for a better environment
-;; (require 'colors)       ; Custom color scheme, using color-theme package
-;; (require 'ac)           ; Auto-complete support
-;; (require 'custom-slime) ; Slime customizations
-;; (require 'cucumber)     ; cucumber (aka feature-mode) support
-;; (require 'latex)        ; Configuration to use pdfLatex. Requires auctex.
-;; (require 'ide)          ; The IDE, based on CEDET/ECB.
-;; (require 'screen)       ; Screen module, needed for IDE support.
+;; (require 'general)          ; General configurations for a better environment
+;; (require 'colors)           ; Custom color scheme, using color-theme package
+;; (require 'ac)               ; Auto-complete support
+;; (require 'custom-yasnippet) ; yasnippet support
+;; (require 'custom-slime)     ; Slime customizations
+;; (require 'cucumber)         ; cucumber (aka feature-mode) support
+;; (require 'latex)            ; Configuration to use pdfLatex. Requires auctex.
+;; (require 'ide)              ; The IDE, based on CEDET/ECB.
+;; (require 'screen)           ; Screen module, needed for IDE support.
 
 ;; Language support. Just uncomment the lines for the languages you want.
 ;; the exception is clojure: if you enable clojure, you can't any other
