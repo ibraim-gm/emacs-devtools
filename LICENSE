@@ -93,3 +93,8 @@ Emacs-DevTools use the following libraries:
   Copyright (C) 2008-2012 Free Software Foundation, Inc.
   by pluskid <pluskid@gmail.com>,  João Távora <joaotavora@gmail.com>
   URL: http://github.com/capitaomorte/yasnippet
+
+* Solarized Colorscheme for Emacs
+  'Solarized Colorscheme' is Copyright (c) 2011 Ethan Schoonover
+  Emacs implementation made by Greg Pfeil <greg@technomadic.org>
+  URL: https://github.com/sellout/emacs-color-theme-solarized

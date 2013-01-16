@@ -11,7 +11,8 @@ The next step was obvious: I cleaned and reorganized my configuration to make ev
 
 If you enable everything, you will have:
 
-* A custom (dark) color theme for your emacs. I find it much easier on the eyes than the standard white background.
+* A [Solarized](http://ethanschoonover.com/solarized) theme for emacs.
+* An alternative, custom (dark) color theme for your emacs.
 * Auto-complete (aka "Intellisense") support for Common Lisp and Clojure, using the lisp process.
 * Auto-comple for other languges, using the content of the opened files of the same type.
 * Support for Java and Android (using ant for compilation). There is also a basic suport for ant XML editing.
