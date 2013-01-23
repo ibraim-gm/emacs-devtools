@@ -17,7 +17,7 @@
 (add-hook 'lisp-mode-hook
           (lambda ()
             (interactive)
-            (define-key lisp-mode-map 'slime)))
+            (define-key lisp-mode-map [f5] 'slime)))
 
 ;; Make sure auto-complete is working on the repl
 (add-hook 'slime-repl-mode-hook
