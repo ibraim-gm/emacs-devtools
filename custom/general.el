@@ -11,6 +11,7 @@
 
 ;; First, load a bunch of required stuff.
 ;; Some of those itens are from the '3rd-party' directory.
+(el-get 'sync '(defshell column-marker))
 (require 'dired)
 (require 'font-lock)
 (require 'recentf)
@@ -18,9 +19,9 @@
 (require 'hippie-exp)
 (require 'browse-url)
 (require 'comint)
+(require 'ido)
 (require 'defshell)
 (require 'column-marker)
-(require 'ido)
 
 ;; Enhancing the main aspects of the UI
 (set-face-attribute 'default nil :font "DejaVu Sans Mono-9")
@@ -56,7 +57,7 @@
 (ido-mode 1)                              ; Interactive Do Things: Simply amazing
 
 ;; I indent with 2 spaces by default. No tabs allowed.
-(setq standard-indent 2)
+(setq-default standard-indent 2)
 (setq-default indent-tabs-mode nil)
 
 ;; Let's fix the whitespace issues: Remove every trailing whitespace on save

@@ -6,8 +6,8 @@
 ;;;
 ;;; lang-c.el --- Editing options for C
 
-(setq c-default-style "linux"
-      c-basic-offset 2)
+(setq-default c-default-style "linux"
+              c-basic-offset 2)
 
 (add-hook 'c-mode-hook
           (lambda ()
