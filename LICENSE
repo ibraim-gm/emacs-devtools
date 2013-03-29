@@ -98,3 +98,6 @@ Emacs-DevTools use the following libraries:
   'Solarized Colorscheme' is Copyright (c) 2011 Ethan Schoonover
   Emacs implementation made by Greg Pfeil <greg@technomadic.org>
   URL: https://github.com/sellout/emacs-color-theme-solarized
+
+* Haskell mode for Emacs
+  URL: https://github.com/haskell/haskell-mode

@@ -32,6 +32,7 @@
 ;; (require 'lang-java)
 ;; (require 'lang-ant)
 ;; (require 'lang-android)
+;; (require 'lang-haskell)
 
 ;; Save/Load custom variables in another file
 ;; If you want, you can use the file included in samples/sample-.emacs-custom
