@@ -1,5 +1,10 @@
 ## About
 
+**Warning**: As of 2013-04 I'm doing a major rewrite and reorganization on the entire project to use the more modern package handling on emacs, specially
+the awesome [el-get](https://github.com/dimitri/el-get). The reworked and updated project is up and running into the `package-management` branch and will stay
+there for some time while I'm still testing it. While the new version is far superior and easier to use than the current one, the Java support was dropped. I'm
+planning on rework this feature in the future, probably leveraging a lot of work to ant/maven in similar fashion to what is done to lisp and clojure.
+
 **Important:** This setup is tested on emacs 24+ on Linux. Running on Windows or using different versions of emacs *may* work, but I'm not really sure.
 
 `emacs-devtools` is pre-configured collection of emacs files to make the live of a lisp developer easy.
