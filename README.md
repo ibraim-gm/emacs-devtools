@@ -118,6 +118,15 @@ Auto-indent on new line. It also identify a broader range of files as "php".
 *    `C-C C-i` calls `:info` in the current identifier.
 *    The cabal build shortcuts work on `.cabal` files too.
 
+### `lang-markdown` (requires [markdown-mode](http://jblevins.org/projects/markdown-mode/) and markdown installed)
+
+*    `C-c C-c m` compiles the current markdown buffer and show the HTML output on another buffer.
+*    `C-c C-c p` compiles the current markdown buffer and open the results in browser.
+*    `C-c C-c e` compiles the current file and generates a `.html` with the results.
+*    `C-c C-c v` same as the previous command, but also show the result file on browser.
+*    `C-c C-c w` compiles the file and put the results on the kill ring.
+*    You can see the full list of features in [the official markdown-mode page](http://jblevins.org/projects/markdown-mode/).
+
 ## Maintaining
 
 If you want to use `emacs-devtools` as a starting point to your personal
