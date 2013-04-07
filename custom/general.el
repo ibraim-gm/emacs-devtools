@@ -15,7 +15,6 @@
 (require 'dired)
 (require 'font-lock)
 (require 'recentf)
-(require 'mouse-sel)
 (require 'hippie-exp)
 (require 'browse-url)
 (require 'comint)
