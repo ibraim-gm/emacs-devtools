@@ -14,6 +14,9 @@
 (el-get 'sync '(ecb escreen rainbow-delimiters))
 
 ;; Manually require some extra package and configure more sane options
+(when (memq system-type '(ms-dos windows-nt))
+  (add-to-list 'load-path (el-get-elpa-package-directory 'ecb)))
+
 (require 'ecb-autoloads)
 (require 'cedet)
 (require 'semantic/sb)
