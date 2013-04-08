@@ -10,8 +10,7 @@
 ;;; emacs 24+
 
 (el-get 'sync 'color-theme-solarized)
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/color-theme-solarized")
+(add-to-list 'custom-theme-load-path (el-get-elpa-package-directory 'color-theme-solarized))
 (load-theme 'solarized-dark t)
 
 ;; Some common lisp specific regexp colors.
