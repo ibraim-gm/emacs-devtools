@@ -107,4 +107,8 @@
 (defconst ediff-use-last-dir t)
 (defconst ediff-diff-options " -b ")
 
+;; On Windows, start maximized
+(when (memq system-type '(ms-dos windows-nt))
+  (w32-send-sys-command 61488))
+
 (provide 'general)
