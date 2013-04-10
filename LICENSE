@@ -1,6 +1,6 @@
 -*- coding: utf-8-unix -*-
 
-Copyright (c) 2012, Rafael Ibraim <ibraim.gm@gmail.com>
+Copyright (c) 2012, 2013 Rafael Ibraim <ibraim.gm@gmail.com>
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -26,78 +26,10 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-Emacs-DevTools use the following libraries:
+Emacs-DevTools use a multitude of libraries to deliver its functionality. The
+list is always growing, and while it's not practical to put the name of every
+library and every developer involved with it here, I still like to thanks all of
+the emacs community for it's attentionand for sharing so much high-quality
+code. Without it, this project wouldn't be possible.
 
-* ac-slime.el
-  by Steve Purcell <steve@sanityinc.com>
-  URL: https://github.com/purcell/ac-slime
-
-* clojure-mode.el
-  Copyright (C) 2007-2011 Jeffrey Chu, Lennart Staflin, Phil Hagelberg
-  URL: http://github.com/technomancy/clojure-mode
-
-* clojure-test-mode.el
-  Copyright (C) 2009-2011 Phil Hagelberg
-  URL: http://emacswiki.org/cgi-bin/wiki/ClojureTestMode
-
-* column-marker.el
-  by Rick Bielawski <rbielaws@i1.net>
-  URL: http://emacswiki.org/emacs/column-marker.el
-
-* defshell.el
-  Copyright ? 2000,2001,2003 Kevin Rodgers
-  URL: http://www.emacswiki.org/cgi-bin/wiki/defshell.el
-
-* escreen.el
-  Copyright (C) 1992, 94, 95, 97, 2001, 2005 Noah S. Friedman
-  URL: http://www.splode.com/~friedman/software/emacs-lisp/src/escreen.el
-
-* php-mode.el
-  Copyright (C) 1999, 2000, 2001, 2003, 2004 Turadg Aleahmad
-  Copyright (C) 2008 Aaron S. Hawley
-  URL: http://php-mode.sourceforge.net/
-
-* auto-complete 1.3.1
-  Copyright (C) 2008, 2009, 2010  Tomohiro Matsuyama
-  URL: http://cx4a.org/software/auto-complete
-
-* color-theme 6.6.0
-  Copyright (C) 1999, 2000  Jonadab the Unsightly One <jonadab@bright.net>
-  Copyright (C) 2000, 2001, 2002, 2003  Alex Schroeder <alex@gnu.org>
-  Copyright (C) 2003, 2004, 2005, 2006  Xavier Maillard <zedek@gnu.org>
-  URL: http://www.nongnu.org/color-theme
-
-* CEDET - Collection of Emacs Development Environment Tools - 1.1
-  URL: http://cedet.sourceforge.net
-
-* ECB - Emacs Code Browser - 2.40
-  URL: http://ecb.sourceforge.net
-
-* cucumber.el
-  Copyright (C) 2008 — 2011 Michael Klishin and other contributors
-  URL: https://github.com/michaelklishin/cucumber.el
-
-* Java Mode Plus
-  'Java Mode Plus' is develop and maintained by Christopher Wellons
-  URL: https://github.com/skeeto/emacs-java
-
-* ant-mode
-  Copyright (C) 2012 Tony Graham and contributors
-  URL: https://github.com/tkg/ant-mode
-
-* android-mode
-  Copyright (C) 2009-2012 R.W van 't Veer and contributors
-  URL: https://github.com/remvee/android-mode
-
-* Yasnippet
-  Copyright (C) 2008-2012 Free Software Foundation, Inc.
-  by pluskid <pluskid@gmail.com>,  João Távora <joaotavora@gmail.com>
-  URL: http://github.com/capitaomorte/yasnippet
-
-* Solarized Colorscheme for Emacs
-  'Solarized Colorscheme' is Copyright (c) 2011 Ethan Schoonover
-  Emacs implementation made by Greg Pfeil <greg@technomadic.org>
-  URL: https://github.com/sellout/emacs-color-theme-solarized
-
-* Haskell mode for Emacs
-  URL: https://github.com/haskell/haskell-mode
+Thank you.

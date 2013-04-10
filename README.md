@@ -1,71 +1,140 @@
 ## About
 
-**Warning**: As of 2013-04 I'm doing a major rewrite and reorganization on the entire project to use the more modern package handling on emacs, specially
-the awesome [el-get](https://github.com/dimitri/el-get). The reworked and updated project is up and running into the `package-management` branch and will stay
-there for some time while I'm still testing it. While the new version is far superior and easier to use than the current one, the Java support was dropped. I'm
-planning on rework this feature in the future, probably leveraging a lot of work to ant/maven in similar fashion to what is done to lisp and clojure.
+**Important:** This setup is *requires* emacs 24+. It also relies heavily on the
+amazing [el-get](https://github.com/dimitri/el-get) to download and synchronize
+packages. I use this setup daily on linux, so Windows support will probably be a
+bit lacking. If you find any bug, let me know.
 
-**Important:** This setup is tested on emacs 24+ on Linux. Running on Windows or using different versions of emacs *may* work, but I'm not really sure.
+`emacs-devtools` is pre-configured collection of emacs files to make the live of
+a developer easy.  Originally my intent was to use emacs only to learn Lisp, but
+soon I find myself using more and more emacs every day. Suddenly, I
+realized that I had a bunch of customizations and utilities that could be very
+useful, mainly for emacs beginners.
 
-`emacs-devtools` is pre-configured collection of emacs files to make the live of a lisp developer easy.
-Originally my intent was to use emacs only to learn Lisp, but soon I find myself using more and more emacs every day. Suddenly, I realized that I had a bunch of customizations and utilities that could be very useful, mainly for emacs beginners.
-
-The next step was obvious: I cleaned and reorganized my configuration to make everything easier to understand and created this project. My hope is that this project serve as a starting point (or at least as a source of ideas) for your own personal emacs configuration.
-
-## What to expect
-
-If you enable everything, you will have:
-
-* A [Solarized](http://ethanschoonover.com/solarized) theme for emacs.
-* An alternative, custom (dark) color theme for your emacs.
-* Auto-complete (aka "Intellisense") support for Common Lisp and Clojure, using the lisp process.
-* Auto-comple for other languges, using the content of the opened files of the same type.
-* Support for Java and Android (using ant for compilation). There is also a basic suport for ant XML editing.
-* [Yasnippet](https://github.com/capitaomorte/yasnippet) support.
-* Default configurations for latex use (requires [AUCTex](http://www.gnu.org/software/auctex/)).
-* Support for multiple "environments" inside your emacs.
-* IDE-like display of your buffers, with customizable layout.
-* An example of using Gnus with GMail.
-* Note that clojure support depends on [Leiningen](http://leiningen.org/) to work.
-
-Keep in mind that I'm **NOT** the author of most of the functionality: I only use the existing emacs libraries and package them together.
+The next step was obvious: I cleaned and reorganized my configuration to make
+everything easier to understand and created this project in 2012. This is a
+major rewrite of the project, now requiring emacs 24+ that use the new package
+management mechanism to make things easier to configure and maintain. My hope is
+that this project serve as a starting point (or at least as a source of ideas)
+for your own personal emacs configuration.
 
 ## Install
 
-        git clone https://bitbucket.org/ibraim/emacs-devtools.git ~/.emacs.d
-        cp ~/.emacs.d/samples/sample-.emacs ~/.emacs
-        cp ~/.emacs.d/samples/sample-.emacs-custom ~/.emacs-custom
-        cp ~/.emacs.d/samples/sample-.gnus.el ~/.gnus.el
+    git clone https://github.com/ibraim-gm/emacs-devtools.git ~/.emacs.d
+    cp ~/.emacs.d/samples/sample-.emacs ~/.emacs
+    cp ~/.emacs.d/samples/sample-.emacs-custom ~/.emacs-custom
+    cp ~/.emacs.d/samples/sample-.gnus.el ~/.gnus.el (Only if you intend to use gnus)
 
-Now, open the `.emacs` and follow the comments to configure what you need. If you want to use Gnus with GMail, don't forget to edit the `.gnus.el` file.
-If you use the IDE support or Gnus with BBDB, you should byte-compile it for faster startup times:
+Now, open the `.emacs` and follow the comments to configure what you
+need. Remember that when you start emacs for the first time or when you enable a
+new feature and restart emacs, it may take a while to donwload the required
+packages and byte-compile them (the compilation buffer may be also show in this
+process). Most packages can be used right after being downloaded, but some of
+then (notably, ECB) requires that you reopen your emacs to see the changes.
 
-        cd ~/.emacs.d/packages/cedet-1.1
-        make
-        cd ~/.emacs.d/packages/ecb-2.40
-        make
-        cd ~/.emacs.d/packages/bbdb-2.35
-        ./configure
-        make
+## Features
 
-Also, if you plan on using Java/Android, make sure everything is correctly installed in your path (namely, ant and the android-sdk path in the .emacs-custom file) before using these modes.
+Note that **all features are disabled by default**. To enable them, you need to
+edit you newly-copied `.emacs` and uncomment teh desired sections.  The
+"requires" text of each feature is only informative;
+[el-get](https://github.com/dimitri/el-get) is already configured to retrieve
+the required dependencies automatically.
 
-## Quick-and-dirty tutorial
+### `general` (requires [defshell](http://emacswiki.org/emacs/defshell.el) and [column-marker](http://emacswiki.org/emacs/column-marker.el))
 
-* You will probably want to change the font face or size. This can be done in `custom/general.el`.
-* By default, all backup files generated by emacs will be located in `.emacs.d/backups`.
-* `C-f12` opens a shell (sh) buffer.
-* Latex mode will use pdflatex by default. Use `C-c C-c` to compile and `C-c C-v` to view.
-* `f9` will enable/disable the IDE layout. Note that you can change your layout using the "Customize" option of emacs later.
-* `M-fN` will switch to the Nth environment. Only one environment can use the IDE layout.
-* In Gnus, `M-x bbdb-create` will create add a new contact to the database. Then, when editing mail, `TAB` will complete email addresses based on the contacts of the database.
-* `f5` has different meanings depending on the file. For lisp/clojure, this starts the REPL. For Java, it executes `ant compile` and for Android `ant debug`.
-* There are some extra keys for Java and Android mode for testing, running the emulator, etc. For more information, take a look at `custom/lang-java.el` or `custom/lang-android.el` to see all of the defined shortcuts.
+*    Change the font to *DeJa Vu Sans Mono*.
+*    Do not show the startup screen and the startup message.
+*    Removes the toolbar and sets the scrollbar to the right side of the screen.
+*    Show column and line numbers on buffers.
+*    Show trailing whitespaces in red.
+*    When saving a buffer, ensure a newline exists at the end of file and remove all trailing whitespace.
+*    Always enable `transient-mark` and always shows the current line highlighted.
+*    By default, change indentation to 2 spaces. No tabs allowed.
+*    When doing a search, highligh the terms in buffer.
+*    Enable the use of the mouse wheel.
+*    Change `yes` and `no` questions on emacs for `y` or `n`.
+*    Set the `fill-column` to 80.
+*    Enables [IDO mode](http://emacswiki.org/emacs/InteractivelyDoThings).
+*    Force emacs to use a single directory (`~/.emacs.d/backups`) to save its backup files, instead of scattering them all around.
+*    Minor (cosmetic) improvements on `dired` and `ediff` modes.
+*    Start a shell inside emacs when you press `C-f12`.
+
+### `colors` (requires [color-theme-solarized](https://github.com/sellout/emacs-color-theme-solarized))
+
+*    Enables the *solarized dark* color-theme.
+*    On `lisp-mode`, add some extra regular expressions to colorize.
+
+### `ac` (requires [auto-complete](https://github.com/auto-complete/auto-complete))
+
+Enables the amazing auto-complete mode on nearly anything. Some of the default
+colors os the popup window are changed to look a bit better with the solarized
+theme.
+
+### `ide` (requires [CEDET](http://cedet.sourceforge.net/), [ECB](http://ecb.sourceforge.net/), [EScreen](http://www.emacswiki.org/emacs/EmacsScreen) and [rainbow-delimiters](https://github.com/jlr/rainbow-delimiters))
+
+*    Enable EDE and the most useful semantic modes.
+*    Enable the use of rainbow delimiters on *all* programming languages.
+*    `f9` will (de)activate ECB and it's IDE-like layout. The `samples/sample-.emacs-custom` file contain a pre-configured layout.
+*    `f11` runs `other-window`. Very useful to switch between code and compilation/error windows.
+*    `f4` will prompt you a directory and a regexp to do a grep search of files.
+*    `M-fN` will switch to a different 'screen' inside emacs and remember in wich window ECB was activated. You can, for example, `f9` and start working on a project,
+     then `M-f2` and start a shell and then `M-f3` to do something else, etc. Note that only one screen is able to remember ECB activation; if you switch screens and
+     reactivate ECB, the last activation will be forgotten.
+
+### `lang-cucumber` (requires [feature-mode](https://github.com/michaelklishin/cucumber.el))
+
+Enables highlighting for [Gherkin](https://github.com/cucumber/gherkin) user stories.
+
+### `lang-latex` (requires [auctex](http://www.gnu.org/software/auctex/) and, obviously, a working latex installation.)
+
+*    When working on latex files, activate `fill-mode` and set compilation options to view/generate PDF files.
+*    `C-c C-c` will compile the current latex file. If the file is already compiled a prompt to open the file will be show.
+*    `C-c C-l` will preview the output file.
+
+### `lang-clojure` (requires [clojure-mode](https://github.com/technomancy/clojure-mode) and [nrepl](https://github.com/kingtim/nrepl.el))
+
+*    Enable useful modes, like rainbow and eldoc when using nrepl.
+*    Auto-indent on new line.
+*    `f5` when in `clojure-mode` starts a nrepl instance with the current leiningen project loaded.
+
+### `lang-php` (requires [php-mode](http://emacswiki.org/emacs/PhpMode))
+
+Auto-indent on new line. It also identify a broader range of files as "php".
+
+### `lang-c`
+
+*    Sets the default formatting style to `"linux"`.
+*    Sets the default indent offset to 2 spaces.
+*    Auto-indent on a new line.
+
+### `lang-haskell` (requires [haskell-mode](https://github.com/haskell/haskell-mode))
+
+*    Both `<return>` and `C-<return>` offer different indentation mechanisms.
+*    `C-c C-l` and `f5` load the current file on the haskell process. If no process exists, a new one is created.
+*    `C-c C-z` switch to the haskell repl buffer.
+*    `C-c C-c` calls the "cabal build" process on the opened project.
+*    `C-c c` prompts the user for a Cabal command to run.
+*    `C-c C-t` calls `:type` in the current identifier.
+*    `C-C C-i` calls `:info` in the current identifier.
+*    The cabal build shortcuts work on `.cabal` files too.
+
+### `lang-markdown` (requires [markdown-mode](http://jblevins.org/projects/markdown-mode/) and markdown installed)
+
+*    `C-c C-c m` compiles the current markdown buffer and show the HTML output on another buffer.
+*    `C-c C-c p` compiles the current markdown buffer and open the results in browser.
+*    `C-c C-c e` compiles the current file and generates a `.html` with the results.
+*    `C-c C-c v` same as the previous command, but also show the result file on browser.
+*    `C-c C-c w` compiles the file and put the results on the kill ring.
+*    You can see the full list of features in [the official markdown-mode page](http://jblevins.org/projects/markdown-mode/).
 
 ## Maintaining
 
-If you want to use `emacs-devtools` as a starting point to your personal configuration, my personal recommendation is to **fork** this project for a private repository and change/add/remove want you want in the fork. This way, you can have a "backup" of your personal options AND will be able to fetch any new features or bug fixes from the original project.
+If you want to use `emacs-devtools` as a starting point to your personal
+configuration, my personal recommendation is to **fork** this project for a
+private repository and change/add/remove want you want in the fork. This way,
+you can have a "backup" of your personal options AND will be able to fetch any
+new features or bug fixes from the original project.
 
 ## License
 
-BSD. Take a look at `LICENSE` and `AUTHORS` for more details.
+BSD-3. Take a look at `LICENSE` and `AUTHORS` for more details.

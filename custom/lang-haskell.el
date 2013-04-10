@@ -6,17 +6,12 @@
 ;;;
 ;;; lang-haskell.el --- Editing support for Haskell
 
-(load "~/.emacs.d/packages/haskell-mode/haskell-site-file")
-(autoload 'turn-on-haskell-doc-mode "haskell-doc" nil t)
+(el-get 'sync 'haskell-mode)
 
 (setq haskell-process-type 'ghci) ; or cabal-dev
 (setq haskell-notify-p t)
 (setq haskell-tags-on-save t)
 (setq haskell-stylish-on-save t)
-
-;(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-;(add-hook 'haskell-mode-hook 'turn-on-haskell-ghci)
-;(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 
 (add-hook 'haskell-mode-hook 'haskell-hook)
 (add-hook 'haskell-cabal-mode-hook 'haskell-cabal-hook)
@@ -33,14 +28,13 @@
   (define-key haskell-mode-map [?\C-c ?\C-l] 'haskell-process-load-file)
   (define-key haskell-mode-map [f5] 'haskell-process-load-file)
 
-  ;; Switch to the REPL.
+  ;; Switch/Bring the REPL, hiding all other windows
   (define-key haskell-mode-map [?\C-c ?\C-z] 'haskell-interactive-switch)
-  ;; “Bring” the REPL, hiding all other windows apart from the source
-  ;; and the REPL.
   (define-key haskell-mode-map (kbd "C-`") 'haskell-interactive-bring)
 
   ;; Build the Cabal project.
   (define-key haskell-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
+
   ;; Interactively choose the Cabal command to run.
   (define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
 
@@ -48,11 +42,6 @@
   ;; message buffer.
   (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
   (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
-
-  ;; Contextually do clever things on the space key, in particular:
-  ;;   1. Complete imports, letting you choose the module name.
-  ;;   2. Show the type of the symbol after the space.
-  (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
 
   ;; Jump to the imports. Keep tapping to jump between import
   ;; groups. C-u f8 to jump back again.
@@ -66,6 +55,7 @@
     (lambda ()
       (interactive)
       (haskell-move-nested 1)))
+
   ;; Same as above but backwards.
   (define-key haskell-mode-map (kbd "C-<left>")
     (lambda ()
@@ -78,6 +68,5 @@
   (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)
   (define-key haskell-cabal-mode-map (kbd "C-`") 'haskell-interactive-bring)
   (define-key haskell-cabal-mode-map [?\C-c ?\C-z] 'haskell-interactive-switch))
-
 
 (provide 'lang-haskell)

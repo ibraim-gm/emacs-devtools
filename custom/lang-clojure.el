@@ -5,23 +5,31 @@
 ;;; All rights reserved. See LICENSE, AUTHORS.
 ;;;
 ;;; lang-clojure.el --- Setup clojure support. Use the awesome
-;;; clojure-mode and remap some keys to more sane values.
+;;; clojure-mode with nrepl and remap some keys to more sane values.
 
-;; We need the awesome clojure-mode of Phil Hagelberg
-(require 'clojure-mode)
+(el-get 'sync '(clojure-mode nrepl))
 
-;; Shortcut for starting a clojure process
+;; configure visibility of some default buffers
+(setq nrepl-hide-special-buffers t)
+(setq nrepl-popup-stacktraces nil)
+(setq nrepl-popup-stacktraces-in-repl t)
+
+;; Enable eldoc, rainbow delimiters adn subword mode
+(add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
+(add-hook 'nrepl-mode-hook 'subword-mode)
+(add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode)
+
+;; Shortcut for auto indenting clojure source and
+;; starting loading a new repl in a leiningen project
 (add-hook 'clojure-mode-hook
           (lambda ()
-            (interactive)
-            (define-key clojure-mode-map [f5] 'clojure-jack-in)))
-
-;; Rebind some keys to more sane values and enable test mode
-(add-hook 'slime-mode-hook
-          (lambda ()
-            (interactive)
-            (define-key slime-mode-map (kbd "C-c C-c") 'slime-eval-defun)
-            (define-key slime-mode-map (kbd "M-p") 'slime-repl-previous-input)
-            (require 'clojure-test-mode)))
+            (define-key clojure-mode-map (kbd "\r") 'newline-and-indent)
+            (define-key clojure-mode-map [f5]
+              (lambda ()
+                (interactive)
+                (nrepl-jack-in nil)
+                ;; little trick to NOT split windows after connection
+                (other-window 1)
+                (delete-other-windows)))))
 
 (provide 'lang-clojure)

@@ -1,0 +1,7 @@
+# Try to use the default configuration for everything that is unspecified
+* text=auto
+
+# Source code and documentation should always be unix-style
+*.el text eol=lf
+*.md text eol=lf
+sample-* text eol=lf
