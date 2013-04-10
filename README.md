@@ -136,6 +136,11 @@ private repository and change/add/remove want you want in the fork. This way,
 you can have a "backup" of your personal options AND will be able to fetch any
 new features or bug fixes from the original project.
 
+## Old emacs?
+
+If you insist on using aa old version of emacs, you can try to use the "old" code.
+Take a look at the tag `before-el-get`.
+
 ## License
 
 BSD-3. Take a look at `LICENSE` and `AUTHORS` for more details.
