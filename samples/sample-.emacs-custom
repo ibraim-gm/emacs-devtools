@@ -14,6 +14,7 @@
  '(android-mode-sdk-dir "/put/your/sdk/path/here")
  '(css-indent-offset 2)
  '(ecb-compilation-buffer-names (quote (("*Calculator*") ("*vc*") ("*vc-diff*") ("*Apropos*") ("*Occur*") ("*shell*") ("*JDEE Compile Server*") ("*Backtrace*") ("*bsh*") ("*Messages*") ("*slime-repl sbcl*") ("*slime-repl clojure*"))))
+ '(ecb-compilation-major-modes (quote (compilation-mode haskell-interactive-mode)))
  '(ecb-compile-window-height 6)
  '(ecb-layout-name "right1")
  '(ecb-options-version "2.40")
