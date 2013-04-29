@@ -51,13 +51,13 @@
   (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-tag-find)
 
   ;; Indent the below lines on columns after the current column.
-  (define-key haskell-mode-map (kbd "C-<right>")
+  (define-key haskell-mode-map (kbd "M-<right>")
     (lambda ()
       (interactive)
       (haskell-move-nested 1)))
 
   ;; Same as above but backwards.
-  (define-key haskell-mode-map (kbd "C-<left>")
+  (define-key haskell-mode-map (kbd "M-<left>")
     (lambda ()
       (interactive)
       (haskell-move-nested -1))))
