@@ -107,6 +107,11 @@
 (defconst ediff-use-last-dir t)
 (defconst ediff-diff-options " -b ")
 
+;; Auto-indent elisp code
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (define-key emacs-lisp-mode-map (kbd "\r") 'newline-and-indent)))
+
 ;; On Windows, start maximized
 (when (memq system-type '(ms-dos windows-nt))
   (w32-send-sys-command 61488))
