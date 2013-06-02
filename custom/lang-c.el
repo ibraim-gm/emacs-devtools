@@ -13,4 +13,8 @@
           (lambda ()
             (define-key c-mode-map (kbd "\r") 'newline-and-indent)))
 
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (define-key c++-mode-map (kbd "\r") 'newline-and-indent)))
+
 (provide 'lang-c)
