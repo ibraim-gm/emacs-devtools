@@ -12,6 +12,7 @@
 
 ;; Change to the correct location of quicklisp-slime-helper
 (defconst quicklisp-slime-helper-location "~/.quicklisp/slime-helper.el")
+(el-get 'sync 'ac-slime)
 
 ;; Shortcut to start slime
 (add-hook 'lisp-mode-hook
