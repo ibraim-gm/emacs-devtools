@@ -7,7 +7,8 @@
 ;;; ac.el --- Auto-complete custom configuration and setup
 
 ;; install and initialization
-(el-get 'sync 'auto-complete-mode)
+(install-if-needed 'auto-complete)
+(require 'auto-complete-config)
 (ac-config-default)
 
 ;; enable for the following modes
@@ -18,7 +19,7 @@
 (add-to-list 'ac-modes 'android-mode)
 (add-to-list 'ac-modes 'ant-mode)
 
-;; ;; Since our color-theme is dark, we need to use more adequate colors
+;; Since our color-theme is dark, we need to use more adequate colors
 (set-face-background 'ac-candidate-face "lightgray")
 (set-face-underline 'ac-candidate-face "darkgray")
 (set-face-background 'ac-selection-face "steelblue")

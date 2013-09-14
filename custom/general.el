@@ -9,9 +9,9 @@
 ;;; the years and was originally copied from somewhere on the
 ;;; internet.
 
-;; First, load a bunch of required stuff.
-;; Some of those itens are from the '3rd-party' directory.
-(el-get 'sync '(defshell column-marker))
+;; First, install and load a bunch of required stuff.
+(install-if-needed 'eshell)
+(install-if-needed 'column-marker)
 (require 'dired)
 (require 'font-lock)
 (require 'recentf)
@@ -19,7 +19,7 @@
 (require 'browse-url)
 (require 'comint)
 (require 'ido)
-(require 'defshell)
+(require 'eshell)
 (require 'column-marker)
 
 ;; Enhancing the main aspects of the UI
@@ -92,15 +92,9 @@
 (put 'upcase-region 'disabled nil)
 (setq enable-recursive-minibuffers t)
 
-;; Use defshell to spawn a shell when C-f12 is pressed.
-;; Also, allow shell buffers to be reused.
-;; Take a look at defshell.el in the 3rd-party folder: I can do
-;; many more useful things than you think.
-(setq defshell-reuse-buffer nil)
-(global-set-key [C-f12]
-		'(lambda ()
-		   (interactive)
-		   (sh)))
+;; Spawn eshell when C-f12 is pressed. If you press it again, you
+;; will switch to the buffer.
+(global-set-key [C-f12] 'eshell)
 
 ;; Ediff
 (defconst ediff-ignore-similar-regions t)

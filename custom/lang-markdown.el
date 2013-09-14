@@ -6,7 +6,7 @@
 ;;;
 ;;; lang-markdown.el --- Support to edit markdown
 
-(el-get 'sync 'markdown-mode)
+(install-if-needed 'markdown-mode)
 
 ;; Auto-enable for markdown files
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
