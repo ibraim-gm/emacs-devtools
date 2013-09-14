@@ -41,7 +41,7 @@ edit you newly-copied `.emacs` and uncomment teh desired sections.  The
 [el-get](https://github.com/dimitri/el-get) is already configured to retrieve
 the required dependencies automatically.
 
-### `general` (requires [defshell](http://emacswiki.org/emacs/defshell.el) and [column-marker](http://emacswiki.org/emacs/column-marker.el))
+### `general` (requires [eshell](http://www.gnu.org/software/emacs/manual/html_node/eshell) and [column-marker](http://emacswiki.org/emacs/column-marker.el))
 
 *    Change the font to *DeJa Vu Sans Mono*.
 *    Do not show the startup screen and the startup message.
@@ -58,7 +58,8 @@ the required dependencies automatically.
 *    Enables [IDO mode](http://emacswiki.org/emacs/InteractivelyDoThings).
 *    Force emacs to use a single directory (`~/.emacs.d/backups`) to save its backup files, instead of scattering them all around.
 *    Minor (cosmetic) improvements on `dired` and `ediff` modes.
-*    Start a shell inside emacs when you press `C-f12`.
+*    Start a (e)shell inside emacs when you press `C-f12`.
+*    On MS-Windows, make sure emacs starts maximized.
 
 ### `colors` (requires [color-theme-solarized](https://github.com/sellout/emacs-color-theme-solarized))
 
@@ -132,13 +133,13 @@ Auto-indent on new line. It also identify a broader range of files as "php".
 
 If you want to use `emacs-devtools` as a starting point to your personal
 configuration, my personal recommendation is to **fork** this project for a
-private repository and change/add/remove want you want in the fork. This way,
+private repository and change/add/remove what you want in the fork. This way,
 you can have a "backup" of your personal options AND will be able to fetch any
 new features or bug fixes from the original project.
 
 ## Old emacs?
 
-If you insist on using aa old version of emacs, you can try to use the "old" code.
+If you insist on using an old version of emacs, you can try to use the "old" code.
 Take a look at the tag `before-el-get`.
 
 ## License
