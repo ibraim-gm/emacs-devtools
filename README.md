@@ -1,11 +1,5 @@
 ## About
 
-**Important:** This setup is *requires* emacs 24+. It also relies heavily on the
-amazing [el-get](https://github.com/dimitri/el-get) to download and synchronize
-packages. I use this setup daily on linux, and sometimes on
-Windows. If you're planning on using Windows you should
-[take a look on the Windows-specific instructions](https://github.com/ibraim-gm/emacs-devtools/blob/master/WINDOWS.md) too.
-
 `emacs-devtools` is pre-configured collection of emacs files to make the live of
 a developer easy.  Originally my intent was to use emacs only to learn Lisp, but
 soon I find myself using more and more emacs every day. Suddenly, I
