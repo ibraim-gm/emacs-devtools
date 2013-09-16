@@ -1,3 +1,7 @@
+**Warning**: These are the old Windows-specific instructions to install emacs-devtools.
+Using the current version, you shouldn't need to do anything that is described here; this
+file now only exists for historic reasons.
+
 ## Windows Notes
 As usual, Windows sucks and you shouldn't be using it for anything remotely
 serious. However, there are times when you're **forced** to use this flawed OS
@@ -72,6 +76,14 @@ Install [MikTeX](http://miktex.org/download) in a folder without spaces. Add the
 `miktex\bin` directory to your `PATH` variable, ex:
 `C:\MiKTeX 2.9\miktex\bin`. Try running `pdflatex --version` on your command
 prompt, if it works you're good to go.
+
+#### Markdown
+
+Make sure you have `perl` installed and the [Markdown](http://daringfireball.net/projects/markdown/)
+installed. On Linux as long as you have the command `markdown` on your path (e.g. `/usr/bin/markdown`),
+everything will work as intended. On Windows, you will need to customize the markdown group inside emacs
+(`M-x customize-group markdown`) and set the markdown command to something like
+`/c/path/to/perl.exe /c/path/to/Markdown.pl` to make it work.
 
 #### Clojure/Leiningen
 
