@@ -6,26 +6,10 @@
 ;;;
 ;;; sample-.emacs --- Sample .emacs configuration file
 
-;; Add the custom scripts to load-path
+;; Add the custom scripts to load-path and bootstrap
+;; the utility functions
 (add-to-list 'load-path "~/.emacs.d/custom")
-
-;; Start package.el
-(require 'package)
-(package-initialize)
-
-;; Setup some extra repositories
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-;; Define a utility function to install the required packages when needed.
-(defvar *package-list-refreshed-p* nil)
-
-(defun install-if-needed (package)
-  (when (not (package-installed-p package))
-    (when (not *package-list-refreshed-p*)
-      (package-refresh-contents)
-      (setf *package-list-refreshed-p* t))
-    (package-install package)))
+(require 'devtools-bootstrap)
 
 ;; Now, the customization stuff. Those are generic settings, useful even if
 ;; don't plan to use emacs as a primary editor
