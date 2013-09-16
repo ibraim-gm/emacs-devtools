@@ -6,9 +6,8 @@
 ;;;
 ;;; lang-haskell.el --- Editing support for Haskell
 
-(el-get 'sync 'haskell-mode)
+(install-if-needed 'haskell-mode)
 
-(setq haskell-process-type 'ghci) ; or cabal-dev
 (setq haskell-notify-p t)
 (setq haskell-tags-on-save t)
 (setq haskell-stylish-on-save t)

@@ -11,11 +11,9 @@
 
 ;; From emacs 24 onwards, cedet is builtin. We only need to worry about
 ;; ecb and escreen
-(el-get 'sync '(ecb escreen rainbow-delimiters))
-
-;; Manually require some extra package and configure more sane options
-(when (memq system-type '(ms-dos windows-nt))
-  (add-to-list 'load-path (el-get-elpa-package-directory 'ecb)))
+(install-if-needed 'ecb)
+(install-if-needed 'escreen)
+(install-if-needed 'rainbow-delimiters)
 
 (require 'ecb-autoloads)
 (require 'cedet)

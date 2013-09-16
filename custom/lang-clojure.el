@@ -7,7 +7,8 @@
 ;;; lang-clojure.el --- Setup clojure support. Use the awesome
 ;;; clojure-mode with nrepl and remap some keys to more sane values.
 
-(el-get 'sync '(clojure-mode nrepl))
+(install-if-needed 'clojure-mode)
+(install-if-needed 'nrepl)
 
 ;; configure visibility of some default buffers
 (setq nrepl-hide-special-buffers t)

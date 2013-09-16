@@ -6,6 +6,7 @@
 ;;;
 ;;; lang-cucumber.el --- Allow editing of cucumber files
 
-(el-get 'sync 'feature-mode)
+(install-if-needed 'feature-mode)
+(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
 (provide 'lang-cucumber)

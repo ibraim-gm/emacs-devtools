@@ -7,7 +7,7 @@
 ;;; lang-php.el --- Setup php support
 
 ;; Load php support
-(el-get 'sync 'php-mode)
+(install-if-needed 'php-mode)
 
 ;; Add to auto-modes list
 (add-to-list 'auto-mode-alist

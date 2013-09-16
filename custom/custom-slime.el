@@ -12,7 +12,6 @@
 
 ;; Change to the correct location of quicklisp-slime-helper
 (defconst quicklisp-slime-helper-location "~/.quicklisp/slime-helper.el")
-(el-get 'sync 'ac-slime)
 
 ;; Shortcut to start slime
 (add-hook 'lisp-mode-hook
@@ -25,12 +24,14 @@
           (lambda ()
             (interactive)
             (slime-mode)
+            (install-if-needed 'ac-slime)
             (set-up-slime-ac)))
 
 ;; Enhance slime-mode a little bit
 (add-hook 'slime-mode-hook
           (lambda ()
             (define-key slime-mode-map (kbd "\r") 'newline-and-indent)
+            (install-if-needed 'ac-slime)
             (set-up-slime-ac)))
 
 ;; Enable slime support for common lisp.

@@ -6,25 +6,10 @@
 ;;;
 ;;; sample-.emacs --- Sample .emacs configuration file
 
-;; Add el-get and the custom scripts to load-path
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+;; Add the custom scripts to load-path and bootstrap
+;; the utility functions
 (add-to-list 'load-path "~/.emacs.d/custom")
-
-;; Make sure that el-get is properly installed. This will need internet connection
-;; and a working installation of git
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
-
-;; Setup some extra repositories
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/") t)
-
-;; Add the path of my custom recipes
-(add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
+(require 'devtools-bootstrap)
 
 ;; Now, the customization stuff. Those are generic settings, useful even if
 ;; don't plan to use emacs as a primary editor

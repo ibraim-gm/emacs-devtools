@@ -7,7 +7,7 @@
 ;;; lang-latex.el --- Load and configure AUCTex to use pdflatex
 ;;; by default and to use auto-fill in latex documents.
 
-(el-get 'sync 'auctex)
+(install-if-needed 'auctex)
 
 (add-hook 'LaTeX-mode-hook
           '(lambda ()
