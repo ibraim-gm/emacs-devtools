@@ -13,11 +13,15 @@
 ;; Change to the correct location of quicklisp-slime-helper
 (defconst quicklisp-slime-helper-location "~/.quicklisp/slime-helper.el")
 
+;; make sure paredit is available
+(install-if-needed 'paredit)
+
 ;; Shortcut to start slime
 (add-hook 'lisp-mode-hook
           (lambda ()
             (interactive)
-            (define-key lisp-mode-map [f5] 'slime)))
+            (define-key lisp-mode-map [f5] 'slime)
+            (paredit-mode)))
 
 ;; Make sure auto-complete is working on the repl
 (add-hook 'slime-repl-mode-hook
@@ -32,7 +36,8 @@
           (lambda ()
             (define-key slime-mode-map (kbd "\r") 'newline-and-indent)
             (install-if-needed 'ac-slime)
-            (set-up-slime-ac)))
+            (set-up-slime-ac)
+            (paredit-mode 1)))
 
 ;; Enable slime support for common lisp.
 ;; this should be called inside the language file that intends to use
