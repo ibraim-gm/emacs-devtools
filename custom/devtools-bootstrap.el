@@ -7,6 +7,11 @@
 ;;; devtools-bootstrap.el --- Initialization code for
 ;;; internal package management.
 
+;; Avoid annoying warnings about cl functions used in runtime.
+;; Needed because of the slime/swank integration provided by quicklisp
+(require 'bytecomp)
+(byte-compile-disable-warning 'cl-functions)
+
 ;; Start package.el
 (require 'cl)
 (require 'package)
