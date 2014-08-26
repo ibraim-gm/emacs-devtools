@@ -33,6 +33,8 @@
 ;; (require 'lang-c)        ; Some basic editing funcionality for C
 ;; (require 'lang-haskell)  ; Support for haskell, including GHCI and Cabal
 ;; (require 'lang-markdown) ; Markdown support
+;; (require 'lang-javascript) ; Javascript support
+;; (require 'lang-html)       ; HTML support
 
 ;; Save/Load custom variables in another file
 ;; If you want, you can use the file included in samples/sample-.emacs-custom

@@ -16,12 +16,22 @@
 ;; make sure paredit is available
 (install-if-needed 'paredit)
 
+(defun change-paredit-bindings ()
+  (interactive)
+  (define-key paredit-mode-map (kbd "C-<right>") 'right-word)
+  (define-key paredit-mode-map (kbd "C-<left>") 'left-word)
+  (define-key paredit-mode-map (kbd "M-<right>") 'paredit-forward-slurp-sexp)
+  (define-key paredit-mode-map (kbd "M-<left>") 'paredit-backward-slurp-sexp)
+  (define-key paredit-mode-map (kbd "C-M-<right>") 'paredit-forward-barf-sexp)
+  (define-key paredit-mode-map (kbd "C-M-<left>") 'paredit-backward-barf-sexp))
+
 ;; Shortcut to start slime
 (add-hook 'lisp-mode-hook
           (lambda ()
             (interactive)
             (define-key lisp-mode-map [f5] 'slime)
-            (paredit-mode)))
+            (paredit-mode)
+            (change-paredit-bindings)))
 
 ;; Make sure auto-complete is working on the repl
 (add-hook 'slime-repl-mode-hook
@@ -37,7 +47,8 @@
             (define-key slime-mode-map (kbd "\r") 'newline-and-indent)
             (install-if-needed 'ac-slime)
             (set-up-slime-ac)
-            (paredit-mode 1)))
+            (paredit-mode 1)
+            (change-paredit-bindings)))
 
 ;; Enable slime support for common lisp.
 ;; this should be called inside the language file that intends to use

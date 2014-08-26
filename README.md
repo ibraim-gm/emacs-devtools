@@ -104,6 +104,10 @@ Enables highlighting for [Gherkin](https://github.com/cucumber/gherkin) user sto
 
 Auto-indent on new line. It also identify a broader range of files as "php".
 
+### `lang-javascript` and `lang-html`
+
+Auto-indent on new line. It also set javascript indent offset to 2 spaces.
+
 ### `lang-c`
 
 *    Sets the default formatting style to `"linux"`.
