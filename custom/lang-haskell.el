@@ -12,16 +12,11 @@
 (setq haskell-tags-on-save t)
 (setq haskell-stylish-on-save t)
 
-(add-hook 'haskell-mode-hook 'haskell-hook)
-(add-hook 'haskell-cabal-mode-hook 'haskell-cabal-hook)
-
 ;; Haskell main editing mode key bindings.
 (defun haskell-hook ()
   ;; Use simple indentation.
-  (turn-on-haskell-simple-indent)
+  (turn-on-haskell-indentation)
   (turn-on-haskell-doc-mode)
-  (define-key haskell-mode-map (kbd "<return>") 'haskell-simple-indent-newline-same-col)
-  (define-key haskell-mode-map (kbd "C-<return>") 'haskell-simple-indent-newline-indent)
 
   ;; Load the current file (and make a session if not already made).
   (define-key haskell-mode-map [?\C-c ?\C-l] 'haskell-process-load-file)
@@ -67,5 +62,9 @@
   (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)
   (define-key haskell-cabal-mode-map (kbd "C-`") 'haskell-interactive-bring)
   (define-key haskell-cabal-mode-map [?\C-c ?\C-z] 'haskell-interactive-switch))
+
+;; add hooks
+(add-hook 'haskell-mode-hook 'haskell-hook)
+(add-hook 'haskell-cabal-mode-hook 'haskell-cabal-hook)
 
 (provide 'lang-haskell)
