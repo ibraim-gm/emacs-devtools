@@ -7,6 +7,7 @@
 ;;; lang-haskell.el --- Editing support for Haskell
 
 (install-if-needed 'haskell-mode)
+(load "haskell-mode-autoloads")
 
 (setq haskell-notify-p t)
 (setq haskell-tags-on-save t)
@@ -37,6 +38,11 @@
   (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
   (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
 
+  ;; Contextually do clever things on the space key, in particular:
+  ;; 1. Complete imports, letting you choose the module name.
+  ;; 2. Show the type of the symbol after the space.
+  (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
+
   ;; Jump to the imports. Keep tapping to jump between import
   ;; groups. C-u f8 to jump back again.
   (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
@@ -66,5 +72,38 @@
 ;; add hooks
 (add-hook 'haskell-mode-hook 'haskell-hook)
 (add-hook 'haskell-cabal-mode-hook 'haskell-cabal-hook)
+
+;; Ensure the tag generation works on Windows.
+;; This particular issue was already fixed on haskell-mode master branch
+;; (see https://github.com/haskell/haskell-mode/issues/49), but it was not
+;; released yet
+(eval-after-load "haskell-process"
+  '(defun haskell-process-generate-tags (&optional and-then-find-this-tag)
+     "Regenerate the TAGS table."
+     (interactive)
+     (let ((process (haskell-process)))
+       (haskell-process-queue-command
+        process
+        (haskell-command-make
+         (cons process and-then-find-this-tag)
+         (lambda (state)
+           (if (eq system-type 'windows-nt)
+               (shell-command
+                (format "powershell -Command \"& { cd %s ; hasktags -e -x (ls -fi *.hs -exclude \\\"#*#\\\" -name -r) }\""
+                        (haskell-session-cabal-dir (haskell-process-session (car state)))))
+             (haskell-process-send-string
+              (car state)
+              (format ":!cd %s && %s | %s | %s"
+                      (haskell-session-cabal-dir (haskell-process-session (car state)))
+                      "find . -name '*.hs*'"
+                      "grep -v '#'" ; To avoid Emacs back-up files. Yeah.
+                      "xargs hasktags -e -x"))))
+         nil
+         (lambda (state response)
+           (when (cdr state)
+             (let ((tags-file-name
+                    (haskell-session-tags-filename (haskell-process-session (car state)))))
+               (find-tag (cdr state))))
+           (haskell-mode-message-line "Tags generated.")))))))
 
 (provide 'lang-haskell)
