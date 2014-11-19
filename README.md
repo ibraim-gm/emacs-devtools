@@ -113,6 +113,7 @@ Auto-indent on new line. It also set javascript indent offset to 2 spaces.
 *    Sets the default formatting style to `"linux"`.
 *    Sets the default indent offset to 2 spaces.
 *    Auto-indent on a new line.
+*    Smarter indentation for comment blocks `/* ... */`
 
 ### `lang-haskell` (requires [haskell-mode](https://github.com/haskell/haskell-mode))
 
