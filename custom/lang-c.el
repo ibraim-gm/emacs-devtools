@@ -14,14 +14,16 @@
 ;;; Idea from http://ergoemacs.org/emacs/elisp_determine_cursor_inside_string_or_comment.html
 (defun smart-newline-and-indent ()
   (interactive)
-  (if (nth 4 (syntax-ppss))
-      (c-indent-new-comment-line)
+  (if (and (nth 4 (syntax-ppss)) (not (nth 7 (syntax-ppss))))
+      (progn
+        (setq-local comment-padding " * ")
+        (c-indent-new-comment-line)
+        (setq-local comment-padding " "))
     (newline-and-indent)))
 
 (add-hook 'c-mode-hook
           (lambda ()
             (c-set-offset 'case-label 2)
-            (setq comment-padding " * ")
             (define-key c-mode-map (kbd "\r") 'smart-newline-and-indent)))
 
 (add-hook 'c++-mode-hook
