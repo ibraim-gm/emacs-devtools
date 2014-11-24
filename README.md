@@ -26,6 +26,7 @@ and/or file a bug on [GitHub](https://github.com/ibraim-gm/emacs-devtools).
     git clone https://github.com/ibraim-gm/emacs-devtools.git ~/.emacs.d
     cp ~/.emacs.d/samples/sample-.emacs ~/.emacs
     cp ~/.emacs.d/samples/sample-.emacs-custom ~/.emacs-custom
+    cp ~/.emacs.d/samples/sample-.muse-projects ~/.muse-projects (Only if you intend to use MUSE)
     cp ~/.emacs.d/samples/sample-.gnus.el ~/.gnus.el (Only if you intend to use gnus)
 
 Now, open the `.emacs` and follow the comments to configure what you
@@ -134,6 +135,10 @@ Auto-indent on new line. It also set javascript indent offset to 2 spaces.
 *    `C-c C-c v` same as the previous command, but also show the result file on browser.
 *    `C-c C-c w` compiles the file and put the results on the kill ring.
 *    You can see the full list of features in [the official markdown-mode page](http://jblevins.org/projects/markdown-mode/).
+
+### `custom-muse`
+*    Loads the project definitions at `~/.muse-projects` (see directory `sample`). You can just copy the sample file and change to your needs.
+*    `F5` will publish the current opened project (`muse-project-publish`)
 
 ## Maintaining
 

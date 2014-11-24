@@ -17,6 +17,7 @@
 ;; (require 'colors)        ; Better color theme
 ;; (require 'ac)            ; Auto-complete support
 ;; (require 'ide)           ; The IDE, based on CEDET/ECB.
+;; (require 'custom-muse)   ; Emacs MUSE configuration
 
 ;; Common lisp support. You should uncomment 'custom-slime' and the desired
 ;; CL implementation. Note that inside the implementation file the function
