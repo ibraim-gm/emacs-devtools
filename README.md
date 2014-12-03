@@ -28,6 +28,7 @@ and/or file a bug on [GitHub](https://github.com/ibraim-gm/emacs-devtools).
     cp ~/.emacs.d/samples/sample-.emacs-custom ~/.emacs-custom
     cp ~/.emacs.d/samples/sample-.muse-projects ~/.muse-projects (Only if you intend to use MUSE)
     cp ~/.emacs.d/samples/sample-.gnus.el ~/.gnus.el (Only if you intend to use gnus)
+    cp -r ~/.emacs.d/samples/gtd/ ~/.gtd (Only if you want the GTD features)
 
 Now, open the `.emacs` and follow the comments to configure what you
 need. Remember that when you start emacs for the first time or when you enable a
@@ -139,6 +140,17 @@ Auto-indent on new line. It also set javascript indent offset to 2 spaces.
 ### `custom-muse`
 *    Loads the project definitions at `~/.muse-projects` (see directory `sample`). You can just copy the sample file and change to your needs.
 *    `F5` will publish the current opened project (`muse-project-publish`)
+
+### GTD
+
+It's highly recommended that you at least know how the GTD workflow works and a minimal knowledge of the `org-mode`.
+If you don't know how org-agenda works, please [RTM](http://orgmode.org/manual/index.html#Top). This setup was based on the implementation
+made by [Charles Cave](http://members.optusnet.com.au/~charles57/GTD/gtd_workflow.html).
+
+*    `C-c r c` starts the capture window (globally).
+*    `F7` will open your agenda view.
+*    `C-c C-t` will change the TODO item type.
+*    `C-c C-q` will change the TODO item tags.
 
 ## Maintaining
 

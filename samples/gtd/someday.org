@@ -1,0 +1,29 @@
+# -*- coding: utf-8-unix; -*-
+# Emacs-DevTools - An easy emacs setup for developers
+#
+# Copyright (C) 2014 by it's authors.
+# All rights reserved. See LICENSE, AUTHORS.
+#
+# gtd/.newgtd.org --- Sample GTD data file (for maybe/someday itens)
+# Please take a look at gtd/.gtd-config.el for details
+
+* Books to read                                                       :books:
+:PROPERTIES:
+:CATEGORY: Books to read
+:END:
+* Games to buy                                                        :games:
+:PROPERTIES:
+:CATEGORY: Games to buy
+:END:
+* Movies to watch                                                    :movies:
+:PROPERTIES:
+:CATEGORY: Movies to watch
+:END:
+* Things to do                                                       :things:
+:PROPERTIES:
+:CATEGORY: Things to do
+:END:
+* Org Configuration
+#+FILETAGS: :@someday:
+#+STARTUP: overview
+#+STARTUP: lognotedone

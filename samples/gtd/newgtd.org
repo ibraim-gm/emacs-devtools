@@ -1,0 +1,16 @@
+# -*- coding: utf-8-unix; -*-
+# Emacs-DevTools - An easy emacs setup for developers
+#
+# Copyright (C) 2014 by it's authors.
+# All rights reserved. See LICENSE, AUTHORS.
+#
+# gtd/.newgtd.org --- Sample GTD data file (for tasks)
+# Please take a look at gtd/.gtd-config.el for details
+
+* Tasks
+:PROPERTIES:
+:CATEGORY: Tasks
+:END:
+* Org Configuration
+#+STARTUP: overview
+#+STARTUP: lognotedone

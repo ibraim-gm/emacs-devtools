@@ -44,3 +44,8 @@
 ;; easier to separate your personal configuration for backup purposes
 ;; (setq custom-file "~/.emacs-custom")
 ;; (load custom-file)
+
+;; If you want to use GTD, please copy the files at samples/gtd, to
+;; somewhere else (e. g. ~/.gtd) and enable the line below.
+;; Feel free to customize the files to match your GTD workflow
+;; (load-file "~/.gtd/.gtd-config.el")
