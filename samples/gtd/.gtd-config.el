@@ -17,23 +17,25 @@
 ;; Note how I separated the states to make 'done','cancelled', etc. workflow-generic.
 (setq org-todo-keywords
   '(; only 'to-do' states:
-    (sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "APPT(a)" "CALL(c)" "|")
+    (sequence "INBOX(n)" "TODO(t)" "STARTED(s)" "WAITING(w)" "APPT(a)" "CALL(c)" "MAYBE(m)" "|")
     ; 'to-do' states and 'closed' states
-    (sequence "BUG(b)" "QUESTION(q)" "ENHANCEMENT(e)" "TESTING(t)" "|" "FIXED(f)" "WONTFIX(o)" "DUPLICATE(u)")
+    (sequence "BUG(b)" "QUESTION(q)" "FEATURE(e)" "TESTING(t)" "|" "FIXED(f)" "WONTFIX(o)" "DUPLICATE(u)")
     ; only 'closed' states
-    (sequence "|" "DONE(d) CANCELED(x) DELEGATED(g)")))
+    (sequence "|" "DONE(d)" "CANCELLED(x)" "DELEGATED(g)")))
 
 ;; Now, let's change to more interesting colors
 (setq org-todo-keyword-faces
-  '(("TODO"        . (:foreground "orange red"    :weight bold))
-    ("STARTED"     . (:foreground "yellow"        :weight bold))
+  '(("INBOX"       . (:foreground "yellow"        :weight bold))
+    ("TODO"        . (:foreground "dark orange"   :weight bold))
+    ("STARTED"     . (:foreground "green yellow"  :weight bold))
     ("WAITING"     . (:foreground "medium purple" :weight bold))
     ("APPT"        . (:foreground "orchid"        :weight bold))
     ("CALL"        . (:foreground "hot pink"      :weight bold))
+    ("MAYBE"       . (:foreground "MediumOrchid1" :weight bold))
 
     ("BUG"         . (:foreground "orange red"    :weight bold))
     ("QUESTION"    . (:foreground "hot pink"      :weight bold))
-    ("ENHANCEMENT" . (:foreground "DeepSkyBlue1"  :weight bold))
+    ("FEATURE"     . (:foreground "DeepSkyBlue1"  :weight bold))
     ("FIXED"       . (:foreground "green"         :weight bold))
     ("WONTFIX"     . (:foreground "SlateGray4"    :weight bold))
     ("DUPLICATE"   . (:foreground "SteelBlue1"    :weight bold))
@@ -44,25 +46,21 @@
 
 ;; The same thing for tags: first we define shotcuts, then colors
 ;; Again, you might want to customize this list
-(setq org-tag-alist '(("@inbox" . ?n)
-                      ("@work" . ?w)
+(setq org-tag-alist '(("@work" . ?w)
                       ("@home" . ?h)
                       ("@internet" . ?i)
-                      ("@someday" . ?m)
-                      ("@projects" .?p)
+                      ("@project" .?p)
                       ("@scheduled" .?s)
                       ("@computer" . ?c)
                       ("@reading" . ?r)
                       ("@errands" . ?e)))
 
 (setq org-tag-faces
-  '(("@inbox"     . (:foreground "yellow"        :weight bold))
-    ("@someday"   . (:foreground "yellow"        :weight bold))
-    ("@work"      . (:foreground "cyan1"         :weight bold))
+  '(("@work"      . (:foreground "cyan1"         :weight bold))
     ("@home"      . (:foreground "salmon1"       :weight bold))
     ("@internet"  . (:foreground "SeaGreen1"     :weight bold))
     ("@computer"  . (:foreground "PaleGreen1"    :weight bold))
-    ("@projects"  . (:foreground "burlywood1"    :weight bold))
+    ("@project"   . (:foreground "burlywood1"    :weight bold))
     ("@reading"   . (:foreground "burlywood3"    :weight bold))
     ("@errands"   . (:foreground "MediumPurple1" :weight bold))
     ("@scheduled" . (:foreground "MediumPurple1" :weight bold))))
@@ -72,39 +70,42 @@
 (setq org-agenda-custom-commands
   '(("w" "Agenda for work"
      ((agenda "")
-      (tags-todo "+@inbox-@someday")
-      (tags-todo "+@work-@scheduled-@internet-@computer-@someday")
-      (tags-todo "+@internet-@home-@someday|+@computer-@home-@someday")
-      (tags-todo "+@errands")))
+      (todo "INBOX")
+      (tags-todo "+@work-@scheduled-@internet-@computer/!-INBOX-MAYBE")
+      (tags-todo "+@internet-@home|+@computer-@home/!-INBOX-MAYBE")
+      (tags-todo "-@errands-@scheduled/!+WAITING|+CALL")
+      (tags-todo "+@errands/!-INBOX-MAYBE")))
     ("h" "Agenda for home"
      ((agenda "")
-      (tags-todo "+@inbox-@someday")
-      (tags-todo "+@home-@scheduled-@internet-@computer-@someday")
-      (tags-todo "+@internet-@work-@someday|+@computer-@work-@someday")
-      (tags-todo "+@errands")))
+      (todo "INBOX")
+      (tags-todo "+@home-@scheduled-@internet-@computer/!-INBOX-MAYBE")
+      (tags-todo "+@internet-@work|+@computer-@work/!-INBOX-MAYBE")
+      (tags-todo "-@errands-@scheduled/!+WAITING|+CALL")
+      (tags-todo "+@errands/!-INBOX-MAYBE")))
     ("p" "Project review"
      ((agenda "")
-      (tags-todo "@project+@inbox|@project-@work-@home-@inbox")
+      (tags-todo "@project-@work-@home/!-INBOX-MAYBE")
+      (tags-todo "@project/!+INBOX|+MAYBE")
       (tags-todo "@project")))
     ("s" "Weekly review"
      ((agenda "")
-      (tags-todo "@someday+@inbox")
-      (tags-todo "@someday+books")
-      (tags-todo "@someday+games")
-      (tags-todo "@someday+movies")
-      (tags-todo "@someday+things")))
+      (tags-todo "things|books|games|movies/!-MAYBE")
+      (tags-todo "things/+MAYBE")
+      (tags-todo "books/+MAYBE")
+      (tags-todo "games/+MAYBE")
+      (tags-todo "movies/+MAYBE")))
     ("i" "Inbox itens"
      ((agenda "")
-      (tags-todo "+@inbox-@someday")))
+      (todo "INBOX")))
     ("e" "Dangling itens"
      ((agenda "")
-      (tags-todo "-@inbox-@work-@home-@someday")))))
+      (tags-todo "-@work-@home/!-INBOX-MAYBE")))))
 
 
 ;; Capture templates. You now the drill by now: customize to your needs
 (setq org-capture-templates
   '(("t" "Todo" entry (file+headline "~/.gtd/newgtd.org" "Tasks")
-     "* TODO %^{Title} :@inbox:\n  %i%?\n\n")
+     "* INBOX %^{Title} \n  %i%?\n\n")
 
     ("b" "Bug" entry (file+headline "~/.gtd/newgtd.org" "Tasks")
      "* BUG %^{Bug} :@inbox:\n  %i%?\n\n")
@@ -125,10 +126,20 @@
      "* TODO %^{what you might do?} :things:\n  %i%?\n\n")))
 
 ;; default warning for deadlines
-(setq org-deadline-warning-days 15)
+(setq org-deadline-warning-days 10)
+
+;; always show inherited tags
+(setq org-agenda-show-inherited-tags 'always)
 
 ;; Shortcut to capture
 (define-key global-map "\C-crc" 'org-capture)
+
+(defun place-agenda-tags ()
+  "Put the agenda tags by the right border of the agenda window."
+  (setq org-agenda-tags-column (- 4 (window-width)))
+  (org-agenda-align-tags))
+
+(add-hook 'org-finalize-agenda-hook 'place-agenda-tags)
 
 ;; shortcut to call the agenda
 (define-key global-map [f7] '(lambda ()
