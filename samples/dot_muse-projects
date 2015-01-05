@@ -4,7 +4,7 @@
 ;;; Copyright (C) 2014 by it's authors.
 ;;; All rights reserved. See LICENSE, AUTHORS.
 ;;;
-;;; sample-.muse-projects --- Sample .muse-projects configuration file
+;;; dot_muse-projects --- Sample .muse-projects configuration file
 
 ;;; Please see documentation at http://mwolson.org/static/doc/muse.html
 (setq muse-project-alist

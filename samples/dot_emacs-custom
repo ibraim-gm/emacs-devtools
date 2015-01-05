@@ -4,7 +4,7 @@
 ;;; Copyright (C) 2012 by it's authors.
 ;;; All rights reserved. See LICENSE, AUTHORS.
 ;;;
-;;; sample-.emacs-custom --- Sample .emacs-custom configuration file
+;;; dot_emacs-custom --- Sample .emacs-custom configuration file
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

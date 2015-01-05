@@ -4,7 +4,7 @@
 ;;; Copyright (C) 2012 by it's authors.
 ;;; All rights reserved. See LICENSE, AUTHORS.
 ;;;
-;;; sample-.emacs --- Sample .emacs configuration file
+;;; dot_emacs --- Sample .emacs configuration file
 
 ;; Add the custom scripts to load-path and bootstrap
 ;; the utility functions

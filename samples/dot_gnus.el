@@ -4,7 +4,7 @@
 ;;; Copyright (C) 2012 by it's authors.
 ;;; All rights reserved. See LICENSE, AUTHORS.
 ;;;
-;;; sample-.gnus.el --- Sample .gnus.el configuration file for gmail support
+;;; dot_gnus.el --- Sample .gnus.el configuration file for gmail support
 
 ;; Make Gnus NOT ignore [Gmail] mailboxes
 (setq gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")

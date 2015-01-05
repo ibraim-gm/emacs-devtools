@@ -24,10 +24,10 @@ and/or file a bug on [GitHub](https://github.com/ibraim-gm/emacs-devtools).
 ## Install
 
     git clone https://github.com/ibraim-gm/emacs-devtools.git ~/.emacs.d
-    cp ~/.emacs.d/samples/sample-.emacs ~/.emacs
-    cp ~/.emacs.d/samples/sample-.emacs-custom ~/.emacs-custom
-    cp ~/.emacs.d/samples/sample-.muse-projects ~/.muse-projects (Only if you intend to use MUSE)
-    cp ~/.emacs.d/samples/sample-.gnus.el ~/.gnus.el (Only if you intend to use gnus)
+    cp ~/.emacs.d/samples/dot_emacs ~/.emacs
+    cp ~/.emacs.d/samples/dot_emacs-custom ~/.emacs-custom
+    cp ~/.emacs.d/samples/dot_muse-projects ~/.muse-projects (Only if you intend to use MUSE)
+    cp ~/.emacs.d/samples/dot_gnus.el ~/.gnus.el (Only if you intend to use gnus)
     cp -r ~/.emacs.d/samples/gtd/ ~/.gtd (Only if you want the GTD features)
 
 Now, open the `.emacs` and follow the comments to configure what you
@@ -79,7 +79,7 @@ theme.
 
 *    Enable EDE and the most useful semantic modes.
 *    Enable the use of rainbow delimiters on *all* programming languages.
-*    `f9` will (de)activate ECB and it's IDE-like layout. The `samples/sample-.emacs-custom` file contain a pre-configured layout.
+*    `f9` will (de)activate ECB and it's IDE-like layout. The `samples/dot_emacs-custom` file contain a pre-configured layout.
 *    `f11` runs `other-window`. Very useful to switch between code and compilation/error windows.
 *    `f4` will prompt you a directory and a regexp to do a grep search of files.
 *    `M-fN` will switch to a different 'screen' inside emacs and remember in wich window ECB was activated. You can, for example, `f9` and start working on a project,
