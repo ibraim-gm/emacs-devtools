@@ -7,3 +7,5 @@ elpa/
 ede-projects.el
 srecode-map.el
 eshell/
+abbrev_defs
+bookmarks

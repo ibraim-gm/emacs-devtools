@@ -36,7 +36,7 @@
 
 ;; Make editing easier
 (when (= (length command-line-args) 1)
-  (setq default-directory "~/"))             ; Make sure the default directory is home
+  (setq default-directory "~/"))          ; Make sure the default directory is home
 (column-number-mode t)                    ; Its always useful to know where you are in a file.
 (line-number-mode t)                      ; Same as above.
 (show-paren-mode t)                       ; No one like to count closing parenthesis.
