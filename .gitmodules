@@ -1,0 +1,3 @@
+[submodule "modules/autoit-mode"]
+	path = modules/autoit-mode
+	url = https://github.com/pcrama/autoit-mode

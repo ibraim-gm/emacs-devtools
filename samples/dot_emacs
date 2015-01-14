@@ -27,15 +27,16 @@
 ;; (require 'lang-sbcl)
 
 ;; Language support. Just uncomment the lines for the languages you want.
-;; (require 'lang-cucumber) ; Allows editing of Gherkin (cucumber) user stories
-;; (require 'lang-latex)    ; Enable latex editing and compilation (to pdf, by default)
-;; (require 'lang-clojure)  ; Support for clojure/leiningen projects
-;; (require 'lang-php)      ; Better editing for PHP
-;; (require 'lang-c)        ; Some basic editing funcionality for C
-;; (require 'lang-haskell)  ; Support for haskell, including GHCI and Cabal
-;; (require 'lang-markdown) ; Markdown support
+;; (require 'lang-cucumber)   ; Allows editing of Gherkin (cucumber) user stories
+;; (require 'lang-latex)      ; Enable latex editing and compilation (to pdf, by default)
+;; (require 'lang-clojure)    ; Support for clojure/leiningen projects
+;; (require 'lang-php)        ; Better editing for PHP
+;; (require 'lang-c)          ; Some basic editing funcionality for C
+;; (require 'lang-haskell)    ; Support for haskell, including GHCI and Cabal
+;; (require 'lang-markdown)   ; Markdown support
 ;; (require 'lang-javascript) ; Javascript support
 ;; (require 'lang-html)       ; HTML support
+;; (require 'lang-autoit)     ; AutoIt3 support
 
 ;; Save/Load custom variables in another file
 ;; If you want, you can use the file included in samples/sample-.emacs-custom

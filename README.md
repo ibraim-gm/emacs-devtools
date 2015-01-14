@@ -24,6 +24,7 @@ and/or file a bug on [GitHub](https://github.com/ibraim-gm/emacs-devtools).
 ## Install
 
     git clone https://github.com/ibraim-gm/emacs-devtools.git ~/.emacs.d
+    cd ~/.emacs.d && git submodule init && git submodule update (Only if the desired feature requires it)
     cp ~/.emacs.d/samples/dot_emacs ~/.emacs
     cp ~/.emacs.d/samples/dot_emacs-custom ~/.emacs-custom
     cp ~/.emacs.d/samples/dot_muse-projects ~/.muse-projects (Only if you intend to use MUSE)
@@ -36,6 +37,11 @@ new feature and restart emacs, it may take a while to donwload the required
 packages and byte-compile them (the compilation buffer may be also show in this
 process). Most packages can be used right after being downloaded, but some of
 then (notably, ECB) requires that you reopen your emacs to see the changes.
+
+Also, some of the features may require code that is available only on GitHub (or equivalent).
+For those cases, the `module` folder contains the necessary references to the  *git submodules*;
+you only need to run `git submodule init` followed by `git submodule update` and everything will
+be checked out correctly.
 
 ## Features
 
@@ -85,6 +91,10 @@ theme.
 *    `M-fN` will switch to a different 'screen' inside emacs and remember in wich window ECB was activated. You can, for example, `f9` and start working on a project,
      then `M-f2` and start a shell and then `M-f3` to do something else, etc. Note that only one screen is able to remember ECB activation; if you switch screens and
      reactivate ECB, the last activation will be forgotten.
+
+### `custom-muse`
+*    Loads the project definitions at `~/.muse-projects` (see directory `sample`). You can just copy the sample file and change to your needs.
+*    `F5` will publish the current opened project (`muse-project-publish`)
 
 ### `lang-cucumber` (requires [feature-mode](https://github.com/michaelklishin/cucumber.el))
 
@@ -137,9 +147,9 @@ Auto-indent on new line. It also set javascript indent offset to 2 spaces.
 *    `C-c C-c w` compiles the file and put the results on the kill ring.
 *    You can see the full list of features in [the official markdown-mode page](http://jblevins.org/projects/markdown-mode/).
 
-### `custom-muse`
-*    Loads the project definitions at `~/.muse-projects` (see directory `sample`). You can just copy the sample file and change to your needs.
-*    `F5` will publish the current opened project (`muse-project-publish`)
+### `lang-autoit` (uses a submodule)
+*    Allow syntax highlight for [AutoIt](https://www.autoitscript.com/site/autoit/) scripts.
+*    Requires that you download teh corresponding submodule (see the instalation instructions).
 
 ### GTD
 
