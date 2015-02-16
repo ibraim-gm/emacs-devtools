@@ -75,11 +75,13 @@ you switch screens."
      ((string= (buffer-name buffer) "*slime-compilation*") nil)
      ((string= (buffer-name buffer) "*nrepl-error*") nil)
      ((string= (buffer-name buffer) "*grep*") nil)
+     ((string= (buffer-name buffer) "*eshell*") ad-do-it)
      (t ad-do-it))))
 
 ;; Now it's for some custom keybindings!
 (global-set-key [f11] 'other-window)                          ; Useful to switch between code/compilation buffers
 (global-set-key [f4] 'find-grep-dired)                        ; A nice shortcut to do a grep search
+(global-set-key [f6] 'ecb-redraw-layout)                      ; Redraw the layout
 (global-set-key [f9] 'ibraim/activate-ide-for-current-screen) ; activate/deactivate ECB
 
 ;; Shortcuts to switch screens. Windows users will be a bit pissed off with M-f4...
