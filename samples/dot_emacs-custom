@@ -15,11 +15,17 @@
  '(css-indent-offset 2)
  '(ecb-compilation-buffer-names (quote (("*Calculator*") ("*vc*") ("*vc-diff*") ("*Apropos*") ("*Occur*") ("*shell*") ("*JDEE Compile Server*") ("*Backtrace*") ("*bsh*") ("*Messages*") ("*slime-repl sbcl*") ("*slime-repl clojure*"))))
  '(ecb-compilation-major-modes (quote (compilation-mode haskell-interactive-mode)))
- '(ecb-compile-window-height 6)
+ '(ecb-compile-window-height 9)
  '(ecb-layout-name "right1")
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
- '(ecb-source-path (quote ("~/project1" "~/project2"))))
+ '(ecb-source-path (quote ("~/project1" "~/project2")))
+ '(haskell-notify-p t t)
+ '(haskell-process-log t)
+ '(haskell-process-type (quote cabal-repl))
+ '(haskell-stylish-on-save t t)
+ '(haskell-tags-on-save t t)
+ '(markdown-command "perl C:/markdown1.0.1/markdown.pl"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
