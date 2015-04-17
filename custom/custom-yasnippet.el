@@ -6,17 +6,34 @@
 ;;;
 ;;; custom-yasnippet.el --- Yasnippet support
 
-;; auto-complete dir
-(add-to-list 'load-path "~/.emacs.d/packages/yasnippet")
-
-;; Require & configure
-(require 'yasnippet)
+(install-if-needed 'yasnippet)
 
 (setq yas-snippet-dirs
-      '("~/.emacs.d/packages/yasnippet/snippets"
-        "~/.emacs.d/packages/cucumber.el/snippets"
-        "~/.emacs.d/packages/emacs-java/snippets"))
+      '("~/.emacs.d/snippets"
+        "~/.emacs.d/custom/snippets"))
 
+;; Functions used by the custom snippets
+(defun yas-custom-get-project ()
+  (or
+   (when (boundp 'project-name) (symbol-value 'project-name))
+   "(Please, fill the variable project-name)"))
+
+(defun yas-custom-get-user-name ()
+  (or
+   (when (boundp 'project-user-name) (symbol-value 'project-user-name))
+   "(Please, fill the variable project-user-name)"))
+
+(defun yas-custom-get-user-mail ()
+  (or
+   (when (boundp 'project-user-mail) (symbol-value 'project-user-mail))
+   "(Please, fill the variable project-user-mail)"))
+
+(defun yas-custom-get-release-years ()
+  (or
+   (when (boundp 'project-release-years) (symbol-value 'project-release-years))
+   "(Please, fill the variable project-release-years)"))
+
+;; enable it everywhere
 (yas-global-mode 1)
 
 (provide 'custom-yasnippet)

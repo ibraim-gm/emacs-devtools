@@ -1,0 +1,15 @@
+# contributor: Rafael Ibraim <ibraim.gm@gmail.com>
+# name: .dirlocals.el Template
+# --
+((nil
+  ;; Avoid wrong encoding on Windows
+  (buffer-file-coding-system . utf-8)
+  ;; Needed data for project/license snippets
+  (project-name . "My Project")
+  (project-release-years . "2014,2015")
+  ;; This is also required, but you might want to
+  ;; set it on yor local emacs configuration, not in the
+  ;; project settings
+  (project-user-name . "John Doe")
+  (project-user-mail . "foo@bar.com")
+  ))

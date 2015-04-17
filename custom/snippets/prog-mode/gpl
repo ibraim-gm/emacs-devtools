@@ -1,0 +1,21 @@
+# contributor: Rafael Ibraim <ibraim.gm@gmail.com>
+# name: GPLv3 Header
+# --
+${1:`(buffer-name)`}
+Copyright `(yas-custom-get-release-years)` `(yas-custom-get-user-name)` <`(yas-custom-get-user-mail)`>
+
+This file is part of `(yas-custom-get-project)`.
+
+`(yas-custom-get-project)` is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+`(yas-custom-get-project)` is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with `(yas-custom-get-project)`.  If not, see <http://www.gnu.org/licenses/>.
+`(comment-region 1 (point))`

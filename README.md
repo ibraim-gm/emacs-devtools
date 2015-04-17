@@ -96,6 +96,9 @@ theme.
 *    Loads the project definitions at `~/.muse-projects` (see directory `sample`). You can just copy the sample file and change to your needs.
 *    `F5` will publish the current opened project (`muse-project-publish`)
 
+### `custom-yasnippet`
+*    Installs `yasnippet`. Also, provides some pre-configured basic snippets.
+
 ### `lang-cucumber` (requires [feature-mode](https://github.com/michaelklishin/cucumber.el))
 
 Enables highlighting for [Gherkin](https://github.com/cucumber/gherkin) user stories.
