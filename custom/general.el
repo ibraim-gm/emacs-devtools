@@ -48,6 +48,7 @@
 (setq next-line-add-newlines nil)         ; The name says it all...
 (setq scroll-step 1)                      ; Scroll for only one line
 (setq scroll-conservatively 10)           ; Size of conservative scroll
+(setq x-underline-at-descent-line t)      ; On X, make the underlines more palatable
 (setq default-major-mode 'text-mode)      ; By default, we are in text mode
 (defconst query-replace-highlight t)      ; Highlight during query
 (defconst search-highlight t)             ; Highlight incremental search
