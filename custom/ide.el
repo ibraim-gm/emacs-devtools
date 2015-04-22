@@ -56,8 +56,8 @@ you switch screens."
    (*ecb-is-active* (ecb-deactivate))
    (t (ibraim/configure-escreen-setup)
       (setf ecb-winman-escreen-number (escreen-get-current-screen-number))
-      (ecb-activate))
-   (setf *ecb-is-active* (not *ecb-is-active*))))
+      (ecb-activate)))
+  (setf *ecb-is-active* (not *ecb-is-active*)))
 
 (defun ibraim/escreen-goto-screen (number)
   "Switch to a given screen number."
