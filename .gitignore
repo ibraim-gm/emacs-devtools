@@ -9,3 +9,6 @@ srecode-map.el
 eshell/
 abbrev_defs
 bookmarks
+TAGS
+projectile-bookmarks.eld
+projectile.cache

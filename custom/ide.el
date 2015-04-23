@@ -14,13 +14,14 @@
 (install-if-needed 'ecb)
 (install-if-needed 'escreen)
 (install-if-needed 'rainbow-delimiters)
+(install-if-needed 'projectile)
 
 (require 'ecb-autoloads)
 (require 'cedet)
 (require 'semantic/sb)
 (require 'srecode)
+(require 'projectile)
 
-(global-ede-mode 1)
 (global-semantic-decoration-mode t)
 (global-semantic-highlight-func-mode t)
 (global-semantic-show-unmatched-syntax-mode t)
@@ -97,5 +98,21 @@ you switch screens."
 (global-set-key [M-f10] '(lambda () (interactive) (ibraim/escreen-goto-screen 9)))
 (global-set-key [M-f11] '(lambda () (interactive) (ibraim/escreen-goto-screen 10)))
 (global-set-key [M-f12] '(lambda () (interactive) (ibraim/escreen-goto-screen 11)))
+
+;; Time to configure project management!
+(projectile-global-mode)
+(global-set-key [C-f5]   'projectile-compile-project)
+(global-set-key [C-M-f5] 'projectile-test-project)
+(global-set-key [C-f4]   'projectile-kill-buffers)
+(global-set-key [C-M-f2] 'projectile-find-file)
+(global-set-key [C-S-f2] 'projectile-switch-project)
+(global-set-key [C-f2]   '(lambda ()
+                            (interactive)
+                            (if (ignore-errors (projectile-project-root))
+                                (projectile-dired)
+                              (progn
+                                (setq projectile-switch-project-action 'projectile-dired)
+                                (projectile-switch-project)
+                                (setq projectile-switch-project-action 'projectile-find-file)))))
 
 (provide 'ide)

@@ -81,9 +81,9 @@ Enables the amazing auto-complete mode on nearly anything. Some of the default
 colors os the popup window are changed to look a bit better with the solarized
 theme.
 
-### `ide` (requires [CEDET](http://cedet.sourceforge.net/), [ECB](http://ecb.sourceforge.net/), [EScreen](http://www.emacswiki.org/emacs/EmacsScreen) and [rainbow-delimiters](https://github.com/jlr/rainbow-delimiters))
+### `ide` (requires [CEDET](http://cedet.sourceforge.net/), [ECB](http://ecb.sourceforge.net/), [EScreen](http://www.emacswiki.org/emacs/EmacsScreen), [rainbow-delimiters](https://github.com/jlr/rainbow-delimiters) and [projectile](https://github.com/bbatsov/projectile))
 
-*    Enable EDE and the most useful semantic modes.
+*    Enable CEDET and the most useful semantic modes.
 *    Enable the use of rainbow delimiters on *all* programming languages.
 *    `f9` will (de)activate ECB and it's IDE-like layout. The `samples/dot_emacs-custom` file contain a pre-configured layout.
 *    `f11` runs `other-window`. Very useful to switch between code and compilation/error windows.
@@ -91,6 +91,12 @@ theme.
 *    `M-fN` will switch to a different 'screen' inside emacs and remember in wich window ECB was activated. You can, for example, `f9` and start working on a project,
      then `M-f2` and start a shell and then `M-f3` to do something else, etc. Note that only one screen is able to remember ECB activation; if you switch screens and
      reactivate ECB, the last activation will be forgotten.
+*    `C-f5` will call `projectile-compile`.
+*    `C-M-f5` will call `projectile-test-project`.
+*    `C-f4` will close all buffers of the project with `projectile-kill-buffers`.
+*    `C-M-f2` will call `projectile-find-file`.
+*    `C-M-f2` will call `projectile-switch-project`.
+*    `C-f2` will call  `projectile-dired`, or switch to a project, if none is present.
 
 ### `custom-muse`
 *    Loads the project definitions at `~/.muse-projects` (see directory `sample`). You can just copy the sample file and change to your needs.
