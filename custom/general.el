@@ -12,6 +12,8 @@
 ;; First, install and load a bunch of required stuff.
 (install-if-needed 'eshell)
 (install-if-needed 'column-marker)
+(install-if-needed 'smex)
+(install-if-needed 'flx-ido)
 (require 'dired)
 (require 'font-lock)
 (require 'recentf)
@@ -57,6 +59,10 @@
 (recentf-mode 1)                          ; Recently edited files in menu
 (setq fill-column 80)                     ; We fill by 80 columns, when enabled.
 (ido-mode 1)                              ; Interactive Do Things: Simply amazing
+(ido-everywhere 1)                        ; Activate IDO everywhere we can
+(flx-ido-mode 1)                          ; Use flx-ido search algorithm
+(setq ido-enable-flex-matching t)         ; Enable flexible matching
+(global-set-key (kbd "M-x") 'smex)        ; Use smex instead of regular M-x
 
 ;; I indent with 2 spaces by default. No tabs allowed.
 (setq-default standard-indent 2)
