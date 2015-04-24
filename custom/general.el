@@ -35,6 +35,7 @@
 (show-paren-mode t)                       ; No one like to count closing parenthesis.
 (setq-default show-trailing-whitespace t) ; Since trailing whitespace is evil, this makes easy to hunt them!
 (transient-mark-mode t)                   ; Highlight mark
+(delete-selection-mode t)                 ; Replace selected text when typing
 (setq truncate-lines t)                   ; Allow lines to be truncated on display
 (global-hl-line-mode t)                   ; Highlight the current line
 (mouse-wheel-mode t)                      ; Allow the mouse wheel to work
