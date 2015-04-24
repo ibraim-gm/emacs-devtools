@@ -4,4 +4,5 @@
 # Source code and documentation should always be unix-style
 *.el text eol=lf
 *.md text eol=lf
+*.sh text eol=lf
 sample-* text eol=lf

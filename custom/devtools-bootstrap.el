@@ -13,8 +13,6 @@
 (byte-compile-disable-warning 'cl-functions)
 
 ;; Start package.el
-(require 'cl)
-(require 'package)
 (package-initialize)
 
 ;; Setup some extra repositories

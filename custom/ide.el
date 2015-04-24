@@ -16,18 +16,19 @@
 (install-if-needed 'rainbow-delimiters)
 (install-if-needed 'projectile)
 
-(require 'ecb-autoloads)
-(require 'cedet)
-(require 'semantic/sb)
-(require 'srecode)
-(require 'projectile)
-
-(global-semantic-decoration-mode t)
-(global-semantic-highlight-func-mode t)
-(global-semantic-show-unmatched-syntax-mode t)
-(global-srecode-minor-mode 1)
-(setq ecb-tip-of-the-day nil)
+;; Ensure good-looking delimiters
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;; Load semantic only when needed
+(defvar *semantic-is-active* nil)
+(add-hook 'prog-mode-hook '(lambda ()
+                             (interactive)
+                             (unless *semantic-is-active*
+                               (require 'semantic/sb)
+                               (global-semantic-decoration-mode t)
+                               (global-semantic-highlight-func-mode t)
+                               (global-semantic-show-unmatched-syntax-mode t)
+                               (setf *semantic-is-active* t))))
 
 ;; Auxiliary funcions and variables for screen swapping support
 ;; the whole point of those routines is to 'remember' on wich screen
@@ -35,6 +36,7 @@
 ;; when switching screens.
 (defvar *ecb-is-active* nil)
 (defvar *escreen-is-installed* nil)
+(setq ecb-tip-of-the-day nil)
 (setf ecb-winman-escreen-number 99) ;; just a trick for the initial screen
 
 (defun ibraim/configure-escreen-setup ()

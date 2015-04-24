@@ -9,7 +9,7 @@
 (install-if-needed 'yasnippet)
 
 (setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"
+      '(;"~/.emacs.d/snippets"
         "~/.emacs.d/custom/snippets"))
 
 ;; Functions used by the custom snippets
@@ -33,7 +33,26 @@
    (when (boundp 'project-release-years) (symbol-value 'project-release-years))
    "(Please, fill the variable project-release-years)"))
 
-;; enable it everywhere
-(yas-global-mode 1)
+;; Reload everything only once and only when needed
+(defvar *yas-reloaded* nil)
+(defun custom-yas-minor-mode (orig-fn &rest args)
+  (unless *yas-reloaded*
+    (yas-reload-all)
+    (setf *yas-reloaded* t))
+  (apply orig-fn args))
+
+(advice-add 'yas-minor-mode :around #'custom-yas-minor-mode)
+
+;; Enable only when needed
+(defun custom--enable-yasnippet ()
+  (interactive)
+  (let ((buff (buffer-name (current-buffer))))
+    (when (cond
+           ((string= buff "*scratch*") nil)
+           (t t))
+      (yas-minor-mode 1))))
+
+(add-hook 'prog-mode-hook #'custom--enable-yasnippet)
+(add-hook 'text-mode-hook #'custom--enable-yasnippet)
 
 (provide 'custom-yasnippet)

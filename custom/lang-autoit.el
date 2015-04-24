@@ -8,7 +8,17 @@
 
 ;; install and initialization
 (add-to-list 'load-path "~/.emacs.d/modules/autoit-mode")
-(require 'autoit-mode)
+
+;; Fix: undeclared variable on upstream code
+(defvar *autoit-smie-backward-bob* nil)
+
+;; Enable to autoload the module
+(autoload 'autoit-mode "autoit-mode" "Mode for AutoIt3 files" t nil)
+
+;; Autoload cl functions when needed
+(autoload 'mapcan "cl" "Common Lisp functions on Emacs" t nil)
+
+;; activate mode automatically
 (add-to-list 'auto-mode-alist '("\.au3$" . autoit-mode))
 
 ;; custom logic for autoit indentation
@@ -49,6 +59,7 @@
           (indent-line-to cur-indent)
         (indent-line-to 0))))) ; If we didn't see an indentation hint, then allow no indentation
 
+;; Fix the identation
 (add-hook 'autoit-mode-hook
           (lambda ()
             (setq indent-line-function 'my-autoit-indent-line)))

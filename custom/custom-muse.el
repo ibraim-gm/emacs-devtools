@@ -9,8 +9,6 @@
 ;; requirements
 (install-if-needed 'muse)
 
-(require 'muse-mode)
-
 ;; load aux modules only when needed
 (add-hook 'muse-mode-hook
           (lambda ()

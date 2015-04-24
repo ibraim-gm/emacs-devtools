@@ -8,7 +8,11 @@
 ;;; only specify SBCL as lisp program and enable the CL support
 ;;; specified in custom-slime.el.
 
-(enable-common-lisp-slime)
+(add-hook 'lisp-mode-hook
+          (lambda ()
+            (interactive)
+            (enable-common-lisp-slime)))
+
 (setq inferior-lisp-program "sbcl")
 
 (provide 'lang-sbcl)

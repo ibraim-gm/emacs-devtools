@@ -14,15 +14,6 @@
 (install-if-needed 'column-marker)
 (install-if-needed 'smex)
 (install-if-needed 'flx-ido)
-(require 'dired)
-(require 'font-lock)
-(require 'recentf)
-(require 'hippie-exp)
-(require 'browse-url)
-(require 'comint)
-(require 'ido)
-(require 'eshell)
-(require 'column-marker)
 
 ;; Enhancing the main aspects of the UI
 (set-face-attribute 'default nil :font "DejaVu Sans Mono-9")
@@ -73,14 +64,19 @@
 (setq-default require-final-newline t)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; Column marker in red.
+;; First column marker in red.
+(defun custom-column-marker-setter (orig-fun &rest args)
+  (set-face-background column-marker-1-face "red")
+  (apply orig-fun args))
+
+(advice-add 'column-marker-1 :around #'custom-column-marker-setter)
+
 ;; Now, for each language that you want a column marker, you should use e.g:
 ;; -> (add-hook 'lisp-mode-hook
 ;; ->           (lambda ()
 ;; ->             (interactive)
 ;; ->             (column-marker-1 80)))
 ;; To mark column 80 in red. This is not enabled in any language by default
-(set-face-background column-marker-1-face "red")
 
 ;; I really hate my system littered with backup files.
 ;; Let them sit on a standard location
