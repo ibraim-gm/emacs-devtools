@@ -43,7 +43,8 @@
                                         (:inherit 'default :foreground "#859900"))))
                         `(org-level-5 ((((class color) (min-colors 89))
                                         (:inherit 'default :foreground "#cb4b16"))))
-                        )
+                        `(font-lock-builtin-face ((((class color) (min-colors 89))
+                                                   (:foreground "#859900")))))
 
 ;; Some common lisp specific regexp colors.
 (font-lock-add-keywords 'lisp-mode
