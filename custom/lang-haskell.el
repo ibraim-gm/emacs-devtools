@@ -74,36 +74,37 @@
 (add-hook 'haskell-cabal-mode-hook 'haskell-cabal-hook)
 
 ;; Ensure the tag generation works on Windows.
-;; This particular issue was already fixed on haskell-mode master branch
-;; (see https://github.com/haskell/haskell-mode/issues/49), but it was not
-;; released yet
-(eval-after-load "haskell-process"
+;; Already fixed, will be available on the next release.
+;; See https://github.com/haskell/haskell-mode/issues/609 for details
+(eval-after-load "haskell-commands"
   '(defun haskell-process-generate-tags (&optional and-then-find-this-tag)
      "Regenerate the TAGS table."
      (interactive)
-     (let ((process (haskell-process)))
+     (let ((process (haskell-interactive-process)))
        (haskell-process-queue-command
         process
-        (haskell-command-make
-         (cons process and-then-find-this-tag)
-         (lambda (state)
-           (if (eq system-type 'windows-nt)
-               (shell-command
-                (format "powershell -Command \"& { cd %s ; hasktags -e -x (ls -fi *.hs -exclude \\\"#*#\\\" -name -r) }\""
-                        (haskell-session-cabal-dir (haskell-process-session (car state)))))
-             (haskell-process-send-string
-              (car state)
-              (format ":!cd %s && %s | %s | %s"
-                      (haskell-session-cabal-dir (haskell-process-session (car state)))
-                      "find . -name '*.hs*'"
-                      "grep -v '#'" ; To avoid Emacs back-up files. Yeah.
-                      "xargs hasktags -e -x"))))
-         nil
-         (lambda (state response)
-           (when (cdr state)
-             (let ((tags-file-name
-                    (haskell-session-tags-filename (haskell-process-session (car state)))))
-               (find-tag (cdr state))))
-           (haskell-mode-message-line "Tags generated.")))))))
+        (make-haskell-command
+         :state (cons process and-then-find-this-tag)
+         :go (lambda (state)
+               (if (eq system-type 'windows-nt)
+                   (haskell-process-send-string
+                    (car state)
+                    (format ":!hasktags --output=\"%s\\TAGS\" -x -e \"%s\""
+                            (haskell-session-cabal-dir (haskell-process-session (car state)))
+                            (haskell-session-cabal-dir (haskell-process-session (car state)))))
+                 (haskell-process-send-string
+                  (car state)
+                  (format ":!cd %s && %s | %s"
+                          (haskell-session-cabal-dir
+                           (haskell-process-session (car state)))
+                          "find . -name '*.hs' -print0 -or -name '*.lhs' -print0 -or -name '*.hsc' -print0"
+                          "xargs -0 hasktags -e -x"))))
+         :complete (lambda (state response)
+                     (when (cdr state)
+                       (let ((tags-file-name
+                              (haskell-session-tags-filename
+                               (haskell-process-session (car state)))))
+                         (find-tag (cdr state))))
+                     (haskell-mode-message-line "Tags generated.")))))))
 
 (provide 'lang-haskell)
