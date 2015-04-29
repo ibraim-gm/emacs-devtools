@@ -83,7 +83,7 @@ you switch screens."
 
 ;; Now it's for some custom keybindings!
 (global-set-key [f11] 'other-window)                          ; Useful to switch between code/compilation buffers
-(global-set-key [f4] 'find-grep-dired)                        ; A nice shortcut to do a grep search
+(global-set-key [f4] 'rgrep)                                  ; A nice shortcut to do a grep search
 (global-set-key [f6] 'ecb-redraw-layout)                      ; Redraw the layout
 (global-set-key [f9] 'ibraim/activate-ide-for-current-screen) ; activate/deactivate ECB
 
