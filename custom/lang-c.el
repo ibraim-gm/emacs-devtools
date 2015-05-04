@@ -28,7 +28,7 @@
 
 (add-hook 'c++-mode-hook
           (lambda ()
-            (setq comment-padding " * ")
+            (setq-local comment-padding " * ")
             (define-key c++-mode-map (kbd "\r") 'smart-newline-and-indent)))
 
 (provide 'lang-c)
