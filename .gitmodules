@@ -1,3 +1,6 @@
 [submodule "modules/autoit-mode"]
 	path = modules/autoit-mode
 	url = https://github.com/pcrama/autoit-mode
+[submodule "modules/cmake-font-lock"]
+	path = modules/cmake-font-lock
+	url = https://github.com/Lindydancer/cmake-font-lock

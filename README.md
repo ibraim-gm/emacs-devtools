@@ -135,6 +135,7 @@ Auto-indent on new line. It also set javascript indent offset to 2 spaces.
 *    Sets the default indent offset to 2 spaces.
 *    Auto-indent on a new line.
 *    Smarter indentation for comment blocks `/* ... */`
+*    If you intend to use CMake, consider enabling `lang-cmake` (need to use `git submodule`)
 
 ### `lang-haskell` (requires [haskell-mode](https://github.com/haskell/haskell-mode))
 

@@ -33,6 +33,7 @@
 ;; (require 'lang-clojure)    ; Support for clojure/leiningen projects
 ;; (require 'lang-php)        ; Better editing for PHP
 ;; (require 'lang-c)          ; Some basic editing funcionality for C
+;; (require 'lang-cmake)      ; Better edit support for cmake
 ;; (require 'lang-haskell)    ; Support for haskell, including GHCI and Cabal
 ;; (require 'lang-markdown)   ; Markdown support
 ;; (require 'lang-javascript) ; Javascript support
