@@ -7,30 +7,30 @@
 # Uncomment the line above to force lf on source files.
 # You can also add the eol attribute on a specific file pattern, as listed below
 * text=auto
-#* text=auto, eol=lf
+[attr]source text=auto, eol=lf
 
 # Documentation and other kinds of text
 *.md text
 
 # C source files
-*.c text
-*.h text
-CMakeLists.txt text
+*.c source
+*.h source
+CMakeLists.txt source
 
 # Lisp / Elisp / Scheme
-*.lisp text
-*.scm  text
-*.el   text
+*.lisp source
+*.scm  source
+*.el   source
 
 # Haskell
-*.hs    text
-*.cabal text
+*.hs    source
+*.cabal source
 
 # PHP, javascript and others
-*.js  text
-*.php text
-*.au3 text
-*.feature text
+*.js  source
+*.php source
+*.au3 source
+*.feature source
 
 # Binary files
 *.bmp  binary
