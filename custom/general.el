@@ -56,6 +56,7 @@
 (setq ido-enable-flex-matching t)         ; Enable flexible matching
 (global-set-key (kbd "M-x") 'smex)        ; Use smex instead of regular M-x
 (setq tags-revert-without-query 1)        ; Tags should be reloaded automatically
+(setq comment-empty-lines t)
 
 ;; I indent with 2 spaces by default. No tabs allowed.
 (setq-default standard-indent 2)
