@@ -1,0 +1,53 @@
+# contributor: Rafael Ibraim <ibraim.gm@gmail.com>
+# name: CMake library template for C
+# --
+cmake_minimum_required(VERSION 3.0)
+include(CheckIncludeFile)
+include(CheckSymbolExists)
+
+# project information
+project(${1:project}
+  LANGUAGES C
+  VERSION 0.1.0
+  )
+
+set(PROJECT_CANONICAL_NAME ${1:$(downcase yas-text)})
+set(PROJECT_COPYRIGHT_YEAR ${2:year?})
+set(PROJECT_COPYRIGHT_AUTHOR "${3:author?}")
+
+# generate version info, etc.
+check_include_file(getopt.h HAVE_GETOPT_H) # this is a sample on how to check for an include
+check_symbol_exists(GetStdHandle windows.h USE_WINDOWS_CONSOLE_API) # this is a sample about how to check for a symbol
+
+configure_file (
+  "\${CMAKE_CURRENT_SOURCE_DIR}/include/${1:$(downcase yas-text)}_config.h.in"
+  "\${CMAKE_CURRENT_SOURCE_DIR}/include/${1:$(downcase yas-text)}_config.h"
+  )
+
+# it's a huge pain to make a shared DLL using MSVC
+IF(MSVC)
+  set(BUILD_TYPE STATIC)
+ELSE()
+  set(BUILD_TYPE SHARED)
+ENDIF()
+
+# sources, headers, etc
+set(${1:$(upcase yas-text)}_SOURCES
+  list
+  your
+  sources
+  here
+  )
+
+set(${1:$(upcase yas-text)}_INCLUDE_DIR \${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+# main target config
+add_library(${1:$(upcase yas-text)} \${BUILD_TYPE} \${${1:$(upcase yas-text)}_SOURCES})
+target_include_directories(${1:$(upcase yas-text)} PUBLIC \${${1:$(upcase yas-text)}_INCLUDE_DIR})
+set_property(TARGET ${1:$(downcase yas-text)} PROPERTY C_STANDARD 11)
+set_property(TARGET ${1:$(downcase yas-text)} PROPERTY C_STANDARD_REQUIRED ON)
+
+# compiler-specific flags
+IF(CMAKE_C_COMPILER_ID MATCHES "GNU")
+  set_property(TARGET ${1:$(downcase yas-text)} PROPERTY COMPILE_OPTIONS -Wall -Wextra -pedantic)
+ENDIF()

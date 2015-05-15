@@ -14,4 +14,7 @@
 (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
 (add-hook 'cmake-mode-hook 'cmake-font-lock-activate)
 
+(when (boundp *yas-reloaded*)
+  (add-hook 'cmake-mode-hook #'custom--enable-yasnippet))
+
 (provide 'lang-cmake)
