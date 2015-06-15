@@ -42,12 +42,16 @@ set(${1:$(upcase yas-text)}_SOURCES
 set(${1:$(upcase yas-text)}_INCLUDE_DIR \${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # main target config
-add_library(${1:$(upcase yas-text)} \${BUILD_TYPE} \${${1:$(upcase yas-text)}_SOURCES})
-target_include_directories(${1:$(upcase yas-text)} PUBLIC \${${1:$(upcase yas-text)}_INCLUDE_DIR})
+add_library(${1:$(downcase yas-text)} \${BUILD_TYPE} \${${1:$(upcase yas-text)}_SOURCES})
+target_include_directories(${1:$(downcase yas-text)} PUBLIC \${${1:$(upcase yas-text)}_INCLUDE_DIR})
 set_property(TARGET ${1:$(downcase yas-text)} PROPERTY C_STANDARD 11)
 set_property(TARGET ${1:$(downcase yas-text)} PROPERTY C_STANDARD_REQUIRED ON)
 
 # compiler-specific flags
 IF(CMAKE_C_COMPILER_ID MATCHES "GNU")
   set_property(TARGET ${1:$(downcase yas-text)} PROPERTY COMPILE_OPTIONS -Wall -Wextra -pedantic)
+ENDIF()
+
+IF(MSVC)
+  set_property(TARGET ${1:$(downcase yas-text)} PROPERTY COMPILE_OPTIONS /D_CRT_SECURE_NO_WARNINGS)
 ENDIF()
