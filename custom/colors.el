@@ -33,6 +33,8 @@
 (custom-theme-set-faces 'solarized-dark
                         `(org-agenda-structure ((((class color) (min-colors 89))
                                                  (:foreground "#93a1a1":weight bold :slant normal :inverse-video nil :underline nil))))
+                        `(org-clock-overlay ((((class color) (min-colors 89))
+                                        (:inherit 'default :foreground "#268bd2"))))
                         `(org-level-1 ((((class color) (min-colors 89))
                                         (:inherit 'default :foreground "#268bd2"))))
                         `(org-level-2 ((((class color) (min-colors 89))
@@ -47,6 +49,17 @@
                                          (:background "#002b36" :foreground "#839496"))))
                         `(font-lock-builtin-face ((((class color) (min-colors 89))
                                                    (:foreground "#859900")))))
+
+(defun my-org-clocktable-indent-string (level)
+  (if (= level 1)
+      ""
+    (let ((str "^"))
+      (while (> level 2)
+        (setq level (1- level)
+              str (concat str "--")))
+      (concat str "-> "))))
+
+(advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
 
 ;; Some common lisp specific regexp colors.
 (font-lock-add-keywords 'lisp-mode
