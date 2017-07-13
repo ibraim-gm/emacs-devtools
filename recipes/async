@@ -1,0 +1,3 @@
+(async :repo "jwiegley/emacs-async"
+       :fetcher github
+       :commit "d6222c2959caaca5c4980038756097da8a51e505")

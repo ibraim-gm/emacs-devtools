@@ -1,0 +1,3 @@
+(popup :repo "auto-complete/popup-el"
+       :fetcher github
+       :commit "46632ab9652dacad56fd961cd6def25a015170ae")

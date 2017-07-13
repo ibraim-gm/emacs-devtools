@@ -1,0 +1,3 @@
+(s :repo "magnars/s.el"
+   :fetcher github
+   :commit "a56f0d0fedf9754e1728067ac868100f2499357d")

@@ -6,6 +6,7 @@
 ;;;
 ;;; init.el --- Initial setup
 
+(package-initialize)
 (load
  (let* ((emacs.d (file-name-as-directory user-emacs-directory))
 	(lisp (file-name-as-directory "lisp"))
@@ -51,13 +52,10 @@
 ;;------ Actual initialization code
 (devtools/bootstrap)
 ;(when (not devtools-installed)
-  (editor/setup)
+(editor/setup)
+(completion/setup)
   (customize-save-variable 'devtools-installed t)
 ;  )
-(require 'editor-init)
+;(require 'editor-init)
 (editor/init)
-
-
-
-
-
+(completion/init)

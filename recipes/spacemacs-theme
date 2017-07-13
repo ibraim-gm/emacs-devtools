@@ -1,0 +1,3 @@
+(spacemacs-theme :repo "nashamri/spacemacs-theme"
+		 :fetcher github
+		 :commit "6f41a3321296c35c1b77660cf3956f07b3b68086")
