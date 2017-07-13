@@ -24,7 +24,7 @@
   (customize-save-variable 'truncate-lines t)
   (customize-save-variable 'global-hl-line-mode t)
   (customize-save-variable 'mouse-wheel-mode t)
-  (customize-save-variable 'next-line-add-newlines t)
+  (customize-save-variable 'next-line-add-newlines nil)
   (customize-save-variable 'scroll-step 1)
   (customize-save-variable 'scroll-conservatively 10)
   (customize-save-variable 'x-underline-at-descent-line t)
@@ -43,7 +43,6 @@
   (customize-save-variable 'enable-recursive-minibuffers t)
   (require 'ediff)
   (customize-save-variable 'ediff-use-last-dir t)
-  (customize-save-variable 'ediff-diff-options " -b ")
-  )
+  (customize-save-variable 'ediff-diff-options " -b "))
 
 (provide 'editor-setup)

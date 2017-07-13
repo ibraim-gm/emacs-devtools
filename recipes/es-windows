@@ -1,0 +1,3 @@
+(es-windows :repo "sabof/es-windows"
+	    :fetcher github
+	    :commit "7ebe6c6e0831373847d7adbedeaa2e506b54b2af")

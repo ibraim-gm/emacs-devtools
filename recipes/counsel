@@ -1,0 +1,4 @@
+(counsel :repo "abo-abo/swiper"
+         :fetcher github
+         :files ("counsel.el")
+	 :commit "718a06bf1d764b981ac50d78fc30704dcffbc96d")

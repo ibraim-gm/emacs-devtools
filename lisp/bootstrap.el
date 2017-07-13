@@ -18,6 +18,7 @@
 (defconst devtools-src-dir (file-name-as-directory (expand-file-name (concat user-emacs-directory "lisp"))))
 (defconst devtools-loaddefs-file (concat devtools-src-dir "loaddefs.el"))
 (defconst devtools-recipe-dir (file-name-as-directory (expand-file-name (concat user-emacs-directory "recipes"))))
+(defconst devtools-quelpa-build-dir (file-name-as-directory (expand-file-name (concat user-emacs-directory "quelpa/build"))))
 
 (defun devtools/bootstrap ()
   "Initialize configuration system"
@@ -58,6 +59,8 @@
   (quelpa 'async)
   (quelpa 'ivy)
   (quelpa 'ag)
-  )
+  (quelpa 'projectile)
+  (quelpa 'counsel-projectile)
+  (quelpa 'project-explorer))
 
 (provide 'devtools-bootstrap)

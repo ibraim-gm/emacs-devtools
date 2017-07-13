@@ -1,0 +1,3 @@
+(projectile :repo "bbatsov/projectile"
+	    :fetcher github
+	    :commit "19fb9fa6590e1dc49afc3c8c5bd69cff6cf743a7")
