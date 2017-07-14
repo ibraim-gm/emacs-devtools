@@ -57,6 +57,7 @@
   (quelpa 'async)
   (quelpa 'ivy)
   (quelpa 'ag)
+  (quelpa 'dumb-jump)
   (quelpa 'auto-complete)
   (quelpa 'projectile)
   (quelpa 'counsel-projectile)

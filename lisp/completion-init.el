@@ -21,6 +21,7 @@
   (global-set-key (kbd "C-c j") 'counsel-git-grep)
   (global-set-key (kbd "C-c k") 'counsel-ag)
   (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+  (dumb-jump-mode)
   (ac-config-default)
   (projectile-global-mode)
   (counsel-projectile-on))
