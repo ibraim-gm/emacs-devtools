@@ -57,6 +57,7 @@
   (quelpa 'async)
   (quelpa 'ivy)
   (quelpa 'ag)
+  (quelpa 'auto-complete)
   (quelpa 'projectile)
   (quelpa 'counsel-projectile)
   (quelpa 'project-explorer))
