@@ -1,3 +1,0 @@
-(pkg-info :repo "lunaryorn/pkg-info.el"
-	  :fetcher github
-	  :commit "f9bb471ee95d1c5fe9adc6b0e98db2ddff3ddc0e")

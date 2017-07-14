@@ -17,7 +17,6 @@
 
 (defconst devtools-src-dir (file-name-as-directory (expand-file-name (concat user-emacs-directory "lisp"))))
 (defconst devtools-loaddefs-file (concat devtools-src-dir "loaddefs.el"))
-(defconst devtools-recipe-dir (file-name-as-directory (expand-file-name (concat user-emacs-directory "recipes"))))
 (defconst devtools-quelpa-build-dir (file-name-as-directory (expand-file-name (concat user-emacs-directory "quelpa/build"))))
 
 (defun devtools/bootstrap ()
@@ -46,13 +45,12 @@
 
 (defun install-and-configure-quelpa ()
   (setq quelpa-update-melpa-p nil)
-  (setq quelpa-checkout-melpa-p nil)
+  (setq quelpa-stable-p t)
   (unless (require 'quelpa nil t)
     (with-temp-buffer
       (url-insert-file-contents "https://raw.github.com/quelpa/quelpa/master/bootstrap.el")
       (eval-buffer))
-    (require 'quelpa))
-  (add-to-list 'quelpa-melpa-recipe-stores devtools-recipe-dir))
+    (require 'quelpa)))
 
 (defun install-all-quelpa-packages ()
   (quelpa 'spacemacs-theme)

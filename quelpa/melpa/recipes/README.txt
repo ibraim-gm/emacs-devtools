@@ -1,1 +1,0 @@
-This directory have to exist, even if it's not used, during the installation of some packages

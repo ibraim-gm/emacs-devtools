@@ -1,3 +1,0 @@
-(epl :repo "cask/epl"
-     :fetcher github
-     :commit "a76ec344a7fee3ca7e7dfb98b86ebc3b8c1a3837")

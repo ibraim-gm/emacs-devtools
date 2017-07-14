@@ -1,3 +1,0 @@
-(dash :repo "magnars/dash.el"
-      :fetcher github
-      :commit "4ae329aa2160411c8b47794de067fcf29bc38a22")

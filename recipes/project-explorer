@@ -1,3 +1,0 @@
-(project-explorer :repo "sabof/project-explorer"
-		  :fetcher github
-		  :commit "7c2cc86a81f679dda355110f916366b64893a5d4")

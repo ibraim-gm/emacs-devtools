@@ -1,3 +1,0 @@
-(ag :repo "Wilfred/ag.el"
-    :fetcher github
-    :commit "2efb3ea5c3f3b4de79a6f21fa8dbcf90afb758f5")
