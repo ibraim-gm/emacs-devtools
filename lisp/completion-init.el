@@ -13,6 +13,7 @@
   (global-set-key (kbd "C-c t") 'project-explorer-toggle)
   (setq counsel-git-grep-cmd-default "git --no-pager grep --full-name -n --no-color -i -e \"%s\"")
   (setq counsel-ag-base-command "ag --vimgrep --nocolor --nogroup %s")
+  (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
   (global-set-key "\C-s" 'swiper)
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
   (global-set-key (kbd "M-x") 'counsel-M-x)

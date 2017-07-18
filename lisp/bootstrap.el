@@ -56,6 +56,7 @@
   (quelpa 'spacemacs-theme)
   (quelpa 'async)
   (quelpa 'ivy)
+  (quelpa 'flx)
   (quelpa 'ag)
   (quelpa 'dumb-jump)
   (quelpa 'auto-complete)
