@@ -60,3 +60,4 @@
 ;(require 'editor-init)
 (editor/init)
 (completion/init)
+(lang/init)

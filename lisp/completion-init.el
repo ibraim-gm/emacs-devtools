@@ -52,6 +52,7 @@
   (cheatsheet-add :group 'Markdown :key "C-c C-t" :description "Add headers")
   (cheatsheet-add :group 'Markdown :key "C-c -" :description "Add rules")
   (cheatsheet-add :group 'Markdown :key "C-c C-c" :description "Action menu")
+  (cheatsheet-add :group 'Markdown :key "C-c C-c t" :description "Generate or update markdown TOC")
   (global-set-key (kbd "C-?") 'cheatsheet-show)
   (which-key-mode))
 
