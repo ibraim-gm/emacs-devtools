@@ -61,6 +61,8 @@
   (quelpa 'auto-complete)
   (quelpa 'projectile)
   (quelpa 'counsel-projectile)
-  (quelpa 'project-explorer))
+  (quelpa 'project-explorer)
+  (quelpa 'markdown-mode)
+  (quelpa 'markdown-toc))
 
 (provide 'devtools-bootstrap)

@@ -54,6 +54,7 @@
 ;(when (not devtools-installed)
 (editor/setup)
 (completion/setup)
+(lang/setup)
   (customize-save-variable 'devtools-installed t)
 ;  )
 ;(require 'editor-init)
