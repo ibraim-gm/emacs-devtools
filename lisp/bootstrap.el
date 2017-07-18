@@ -41,7 +41,8 @@
       (with-current-buffer (find-file-noselect generated-autoload-file)
 	(insert ";;")
 	(save-buffer)))
-    (update-directory-autoloads devtools-src-dir)))
+    (update-directory-autoloads devtools-src-dir)
+    (kill-buffer "loaddefs.el")))
 
 (defun install-and-configure-quelpa ()
   (setq quelpa-update-melpa-p nil)
