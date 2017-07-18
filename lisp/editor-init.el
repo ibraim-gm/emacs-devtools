@@ -10,6 +10,7 @@
 ;;;###autoload
 (defun editor/init ()
   "Setup values that aren't supported by CONFIGURE."
+  (set-face-attribute 'default nil :font "DejaVu Sans Mono-10")
   (modify-frame-parameters nil '((wait-for-wm . nil)))
   (editor-init-title)
   (fset 'yes-or-no-p 'y-or-n-p)
