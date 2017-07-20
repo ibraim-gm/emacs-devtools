@@ -7,6 +7,8 @@
 ;;; init.el --- Initial setup
 
 (package-initialize)
+(setq package-enable-at-startup nil)
+
 (load
  (let* ((emacs.d (file-name-as-directory user-emacs-directory))
 	(lisp (file-name-as-directory "lisp"))
@@ -50,14 +52,10 @@
 ;; (global-set-key [C-f12] 'eshell)
 
 ;;------ Actual initialization code
-(devtools/bootstrap)
-;(when (not devtools-installed)
-(editor/setup)
-(completion/setup)
-(lang/setup)
-  (customize-save-variable 'devtools-installed t)
-;  )
-;(require 'editor-init)
-(editor/init)
-(completion/init)
-(lang/init)
+(defun devtools-install ()
+  (interactive)
+  (devtools/bootstrap)
+  (editor/setup)
+  (completion/setup)
+  (lang/setup)
+  (generate-dot-emacs))
