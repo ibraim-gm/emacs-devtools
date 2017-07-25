@@ -13,7 +13,6 @@
   (global-set-key (kbd "C-c t") 'project-explorer-toggle)
   (setq counsel-git-grep-cmd-default "git --no-pager grep --full-name -n --no-color -i -e \"%s\"")
   (setq counsel-ag-base-command "ag --vimgrep --nocolor --nogroup %s")
-  (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
   (global-set-key "\C-s" 'swiper)
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
   (global-set-key (kbd "M-x") 'counsel-M-x)
@@ -23,11 +22,48 @@
   (global-set-key (kbd "C-c k") 'counsel-ag)
   (global-set-key (kbd "C-x g") 'magit-status)
   (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
-  (dumb-jump-mode)
-  (ac-config-default)
-  (projectile-global-mode)
-  (counsel-projectile-on)
-  (configure-cheatsheet))
+  ;; ivy config
+  (eval-after-load "ivy"
+    '(progn
+       (setq ivy-use-virtual-buffers t)
+       (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))))
+
+  ;; dumb-jump
+  (bind-lazy-cmds (("C-M-p" . dumb-jump-back)
+		   ("C-M-g" . dumb-jump-go))
+		  (dumb-jump-mode))
+
+  ;;project commands
+  (bind-lazy-cmds (("C-c p m" . projectile-commander)
+		   ("C-c p t" . projectile-toggle-between-implementation-and-test)
+		   ("C-c p P" . projectile-test-project)
+		   ("C-c p c" . projectile-compile-project)
+		   ("C-c p i" . projectile-invalidate-cache)
+		   ("C-c p b" . counsel-projectile-switch-to-buffer)
+		   ("C-c p d" . counsel-projectile-find-dir)
+		   ("C-c p f" . counsel-projectile-find-file)
+		   ("C-c p p" . counsel-projectile-switch-project))
+		  (projectile-global-mode)
+		  (counsel-projectile-on))
+
+  ;; idle init
+  (run-with-idle-timer
+   1 nil
+   (lambda ()
+     (ivy-mode t)
+     (ac-config-default)
+     (configure-cheatsheet))))
+
+(defmacro bind-lazy-cmds (commands &rest activation-forms)
+  `(progn
+     ,@(mapcar (lambda (e)
+		 `(global-set-key (kbd ,(car e))
+				  (lambda ()
+				    (interactive)
+				    ,@(mapcar (lambda (e)  `(global-unset-key (kbd ,(car e)))) commands)
+				    ,@activation-forms
+				    (,(cdr e)))))
+	       commands)))
 
 (defun configure-cheatsheet ()
   (cheatsheet-add :group 'Display :key "C-x C-+" :description "text-scale-adjust")

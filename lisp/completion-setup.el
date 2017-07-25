@@ -10,7 +10,6 @@
 ;;;###autoload
 (defun completion/setup ()
   "Setup the values of custom confurations to make completion work"
-  (customize-save-variable 'ivy-mode t)
-  (customize-save-variable 'ivy-use-virtual-buffers t))
+  nil)
 
 (provide 'completion-setup)
