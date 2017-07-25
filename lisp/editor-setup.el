@@ -38,6 +38,7 @@
   (customize-save-variable 'indent-tabs-mode t)
   (customize-save-variable 'require-final-newline t)
   (customize-save-variable 'backup-directory-alist (quote ((".*" . "~/.emacs.d/backup/"))))
+  (customize-save-variable 'auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/backup/" t))))
   (customize-save-variable 'ls-lisp-dirs-first t)
   (customize-save-variable 'dired-listing-switches "-l")
   (customize-save-variable 'enable-recursive-minibuffers t)
