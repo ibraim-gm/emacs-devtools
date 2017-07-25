@@ -26,7 +26,12 @@
   (eval-after-load "ivy"
     '(progn
        (setq ivy-use-virtual-buffers t)
-       (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))))
+       (setq ivy-sort-matches-functions-alist
+	     '((t)
+	       (ivy-switch-buffer . ivy-sort-function-buffer)
+	       (counsel-find-file . devtools-ivy-sort-files-function)))
+       (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
+       (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)))
 
   ;; dumb-jump
   (bind-lazy-cmds (("C-M-p" . dumb-jump-back)
@@ -53,6 +58,12 @@
      (ivy-mode t)
      (ac-config-default)
      (configure-cheatsheet))))
+
+(defun devtools-ivy-sort-files-function (_name candidates)
+  (cl-sort (copy-sequence candidates)
+           (lambda (x y)
+             (string< (if (string-suffix-p "/" x) (substring x 0 -1) x)
+                      (if (string-suffix-p "/" y) (substring y 0 -1) y)))))
 
 (defmacro bind-lazy-cmds (commands &rest activation-forms)
   `(progn
