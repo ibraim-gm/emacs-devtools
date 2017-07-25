@@ -83,8 +83,7 @@
     (insert "  (run-with-idle-timer")(newline)
     (insert "   5 nil")(newline)
     (insert "   (lambda ()")(newline)
-    (insert "     (setq gc-cons-threshold 800000)")(newline)
-    (insert "     (message \"gc-cons-threshold restored to %S\" gc-cons-threshold))))")(newline)
+    (insert "     (setq gc-cons-threshold 800000))))")(newline)
     (save-buffer))
   (kill-buffer ".emacs"))
 
