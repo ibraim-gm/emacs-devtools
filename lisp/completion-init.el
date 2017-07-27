@@ -26,6 +26,8 @@
   (eval-after-load "ivy"
     '(progn
        (setq ivy-use-virtual-buffers t)
+       (setq ivy-re-builders-alist
+	     '((t . devtools-ivy--regex-plus)))
        (setq ivy-sort-matches-functions-alist
 	     '((t)
 	       (ivy-switch-buffer . ivy-sort-function-buffer)
@@ -60,10 +62,19 @@
      (configure-cheatsheet))))
 
 (defun devtools-ivy-sort-files-function (_name candidates)
-  (cl-sort (copy-sequence candidates)
-           (lambda (x y)
-             (string< (if (string-suffix-p "/" x) (substring x 0 -1) x)
-                      (if (string-suffix-p "/" y) (substring y 0 -1) y)))))
+  "Sort candidates by size, and then by lexicographic order."
+  (cl-flet ((remove-suffix (lambda (s) (if (string-suffix-p "/" s) (substring s 0 -1) s))))
+    (cl-sort (copy-sequence candidates)
+	     (lambda (x y)
+	       (let* ((str1 (remove-suffix x))
+		      (str2 (remove-suffix y))
+		      (len1 (length str1))
+		      (len2 (length str2)))
+		 (if (= len1 len2) (string< str1 str2) (< len1 len2)))))))
+
+(defun devtools-ivy--regex-plus (str)
+  "Like ivy-rregex-plus, but always trating `.` as a literal character."
+  (ivy--regex-plus (replace-regexp-in-string "\\." "\\." str nil t)))
 
 (defmacro bind-lazy-cmds (commands &rest activation-forms)
   `(progn
