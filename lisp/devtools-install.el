@@ -84,6 +84,7 @@
   (quelpa 'which-key)
   (quelpa 'web-mode)
   (quelpa 'smartparens)
+  (quelpa 'rainbow-delimiters)
   (quelpa 'feature-mode)
   (quelpa 'markdown-mode)
   (quelpa 'markdown-toc))

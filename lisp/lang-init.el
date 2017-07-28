@@ -12,6 +12,7 @@
 (defun lang/init ()
   "Initialize language-specific configuration"
   (lang-smartparens-init)
+  (lang-rainbow-delimiters)
   (lang-cucumber-init)
   (lang-web-init)
   (lang-markdown-init))
@@ -27,6 +28,9 @@
     (indent-according-to-mode)
     (previous-line)
     (indent-according-to-mode)))
+
+(defun lang-rainbow-delimiters ()
+  (add-hook 'web-mode-hook 'rainbow-delimiters-mode))
 
 (defun lang-cucumber-init ()
   (setq feature-default-i18n-file (concat devtools-data-dir "i18n.yml"))
