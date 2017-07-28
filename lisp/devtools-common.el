@@ -7,6 +7,7 @@
 ;;; devtools-common.el --- emacs-devtools common definitions
 
 (defconst devtools-src-dir (file-name-as-directory (expand-file-name (concat user-emacs-directory "lisp"))))
+(defconst devtools-data-dir (file-name-as-directory (expand-file-name (concat devtools-src-dir "data"))))
 (defconst devtools-loaddefs-file (concat devtools-src-dir "loaddefs.el"))
 (defconst devtools-quelpa-build-dir (file-name-as-directory (expand-file-name (concat user-emacs-directory "quelpa/build"))))
 

@@ -6,10 +6,13 @@
 ;;;
 ;;; lang-init.el --- Languague-specific initialization
 
+(require 'devtools-common)
+
 ;;;###autoload
 (defun lang/init ()
   "Initialize language-specific configuration"
   (lang-smartparens-init)
+  (lang-cucumber-init)
   (lang-web-init)
   (lang-markdown-init))
 
@@ -24,6 +27,10 @@
     (indent-according-to-mode)
     (previous-line)
     (indent-according-to-mode)))
+
+(defun lang-cucumber-init ()
+  (setq feature-default-i18n-file (concat devtools-data-dir "i18n.yml"))
+  (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode)))
 
 (defun lang-web-init ()
   (add-hook 'web-mode-hook 'devtools-web-mode-hook)
