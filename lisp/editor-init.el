@@ -18,15 +18,18 @@
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
   (setq-default ediff-ignore-similar-regions t)
   (load-theme 'spacemacs-dark t)
-  (editor-maximize-on-ms-windows))
+  (editor-maximize))
 
 (defun editor-init-title ()
   (setq frame-title-format
 	(list (format "%s %%S: %%j " (system-name))
 	      '(buffer-file-name "%f" (dired-directory dired-directory "%b")))))
 
-(defun editor-maximize-on-ms-windows ()
+(defun editor-maximize ()
   (when (memq system-type '(ms-dos windows-nt))
-    (w32-send-sys-command 61488)))
+    (w32-send-sys-command 61488))
+  (when (memq system-type '(gnu gnu/linux))
+    (x-send-client-message nil 0 nil "_NET_WM_STATE" 32 '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
+    (x-send-client-message nil 0 nil "_NET_WM_STATE" 32 '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))))
 
 (provide 'editor-init)
