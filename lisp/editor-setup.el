@@ -47,6 +47,11 @@
   (customize-save-variable 'spacemacs-theme-comment-italic t)
   (customize-save-variable 'spacemacs-theme-org-height nil)
   (customize-save-variable 'spacemacs-theme-org-agenda-height nil)
+  (customize-save-variable 'projectile-globally-ignored-directories
+			   (quote (".idea" ".ensime_cache" ".eunit" ".git" ".hg"
+				   ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox"
+				   ".svn" ".stack-work"
+				   "node_modules")))
   (require 'ediff)
   (customize-save-variable 'ediff-use-last-dir t)
   (customize-save-variable 'ediff-diff-options " -b "))
