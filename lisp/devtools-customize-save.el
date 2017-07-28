@@ -4,12 +4,13 @@
 ;;; Copyright (C) 2017 by it's authors.
 ;;; All rights reserved. See LICENSE, AUTHORS.
 ;;;
-;;; editor-setup.el --- First-time setup of common editor
+;;; devtools-customize-save.el --- Save values in customize
 ;;; variables
 
 ;;;###autoload
-(defun editor/setup ()
+(defun devtools-save-custom-values ()
   "Setup the values of custom confurations to make editing easier"
+  (interactive)
   (customize-save-variable 'inhibit-startup-screen t)
   (customize-save-variable 'inhibit-startup-message t)
   (customize-save-variable 'tool-bar-mode nil)
@@ -51,9 +52,13 @@
 			   (quote (".idea" ".ensime_cache" ".eunit" ".git" ".hg"
 				   ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox"
 				   ".svn" ".stack-work"
+				   "quelpa" "elpa" "project-explorer-cache"
+				   "auto-save-list" "backup"
 				   "node_modules")))
+  (customize-save-variable 'markdown-command "pandoc")
+  (customize-save-variable 'markdown-command-needs-filename t)
   (require 'ediff)
   (customize-save-variable 'ediff-use-last-dir t)
   (customize-save-variable 'ediff-diff-options " -b "))
 
-(provide 'editor-setup)
+(provide 'devtools-customize-save)

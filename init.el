@@ -9,11 +9,11 @@
 (package-initialize)
 (setq package-enable-at-startup nil)
 
-(load
- (let* ((emacs.d (file-name-as-directory user-emacs-directory))
-	(lisp (file-name-as-directory "lisp"))
-	(bootstrap-file (concat emacs.d lisp "bootstrap.el")))
-   (expand-file-name bootstrap-file)))
+(let* ((emacs.d (file-name-as-directory user-emacs-directory))
+       (src-dir (file-name-as-directory "lisp")))
+  (add-to-list 'load-path src-dir)
+  (require 'devtools-common)
+  (devtools-update-all-autoloads))
 
 ;;--- Missing from 'general.el'
 ;; Enhancing the main aspects of the UI
@@ -50,12 +50,3 @@
 ;; (put 'upcase-region 'disabled nil)
 
 ;; (global-set-key [C-f12] 'eshell)
-
-;;------ Actual initialization code
-(defun devtools-install ()
-  (interactive)
-  (devtools/bootstrap)
-  (editor/setup)
-  (completion/setup)
-  (lang/setup)
-  (generate-dot-emacs))
