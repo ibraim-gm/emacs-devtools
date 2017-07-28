@@ -54,6 +54,7 @@
   (quelpa '(cheatsheet :repo "darksmile/cheatsheet" :fetcher github :commit "e4f8e0110167ea16a17a74517d1f10cb7ff805b8") :stable nil)
   (quelpa 'which-key)
   (quelpa 'web-mode)
+  (quelpa 'smartparens)
   (quelpa 'markdown-mode)
   (quelpa 'markdown-toc))
 
