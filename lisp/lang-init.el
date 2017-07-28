@@ -19,6 +19,7 @@
 
 (defun lang-smartparens-init ()
   (require 'smartparens-config)
+  (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
   (add-hook 'web-mode-hook 'smartparens-mode)
   (sp-local-pair 'web-mode "{" nil :post-handlers '(:add curly-braces-on-enter) :when '(("RET"))))
 
@@ -30,6 +31,7 @@
     (indent-according-to-mode)))
 
 (defun lang-rainbow-delimiters ()
+  (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
   (add-hook 'web-mode-hook 'rainbow-delimiters-mode))
 
 (defun lang-cucumber-init ()
