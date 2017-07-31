@@ -10,7 +10,7 @@
 (setq package-enable-at-startup nil)
 
 (let* ((emacs.d (file-name-as-directory user-emacs-directory))
-       (src-dir (file-name-as-directory "lisp")))
+       (src-dir (file-name-as-directory (concat emacs.d "lisp"))))
   (add-to-list 'load-path src-dir)
   (require 'devtools-common)
   (devtools-update-all-autoloads))
