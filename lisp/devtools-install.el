@@ -69,7 +69,7 @@
     (require 'quelpa)))
 
 (defun install-all-quelpa-packages ()
-  (quelpa 'spacemacs-theme)
+  (quelpa '(spacemacs-theme :repo "nashamri/spacemacs-theme" :fetcher github :commit "b26162e8974c532b3241a43c8f194a340636e9ea" :stable nil))
   (quelpa 'async)
   (quelpa 'ivy)
   (quelpa 'flx)
@@ -77,7 +77,7 @@
   (quelpa 'dumb-jump)
   (quelpa 'auto-complete)
   (quelpa 'projectile)
-  (quelpa 'counsel-projectile)
+  (quelpa '(counsel-projectile :repo "ericdanan/counsel-projectile" :fetcher github :commit "aefd25c74718e66f180127c0d273eade887325b0" :stable nil))
   (quelpa 'project-explorer)
   (quelpa 'magit)
   (quelpa '(cheatsheet :repo "darksmile/cheatsheet" :fetcher github :commit "e4f8e0110167ea16a17a74517d1f10cb7ff805b8") :stable nil)
