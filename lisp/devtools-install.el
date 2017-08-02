@@ -74,7 +74,7 @@
   (quelpa '(flx                :repo "lewang/flx"                   :fetcher github :commit "v0.6.1" :files ("flx.el")))
   (quelpa '(ag                 :repo "Wilfred/ag.el"                :fetcher github :commit "0.47"))
   (quelpa '(dumb-jump          :repo "jacktasia/dumb-jump"          :fetcher github :commit "8fae9be1b630c57d5d40586bddda70024006701f"))
-  (quelpa '(auto-complete      :repo "auto-complete/auto-complete"  :fetcher github :commit "v1.5.1" :files ("*.el" "dict")))
+  (quelpa '(company            :repo "company-mode/company-mode"    :fetcher github :commit "0.9.4"))
   (quelpa '(projectile         :repo "bbatsov/projectile"           :fetcher github :commit "v0.14.0" :files ("projectile.el")))
   (quelpa '(counsel-projectile :repo "ericdanan/counsel-projectile" :fetcher github :commit "aefd25c74718e66f180127c0d273eade887325b0"))
   (quelpa '(project-explorer   :repo "sabof/project-explorer"       :fetcher github :commit "0.14.3"))

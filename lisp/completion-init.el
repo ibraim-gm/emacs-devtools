@@ -22,6 +22,33 @@
   (global-set-key (kbd "C-c k") 'counsel-ag)
   (global-set-key (kbd "C-x g") 'magit-status)
   (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+  ;; company config
+  (eval-after-load "company"
+    '(progn
+       (setq company-idle-delay 0.3)
+       (setq company-dabbrev-downcase nil)
+       (setq company-dabbrev-code-ignore-case t)
+       (setq company-show-numbers t)
+       (setq company-minimum-prefix-length 2)
+       (setq company-auto-complete t)
+       (global-company-mode)
+       (global-set-key (kbd "C-<tab>") 'company-complete-common-or-cycle)
+       ;; revert the changes that spacemacs-theme do to company
+       (set-face-attribute 'company-echo-common nil :foreground "firebrick1")
+       (set-face-attribute 'company-preview nil :background "blue4" :foreground "wheat")
+       (set-face-attribute 'company-preview-common nil :background "blue4" :foreground "red")
+       (set-face-attribute 'company-preview-search nil :background "blue1" :foreground "wheat")
+       (set-face-attribute 'company-scrollbar-fg nil :background "red")
+       (set-face-attribute 'company-scrollbar-bg nil :background "gold")
+       (set-face-attribute 'company-tooltip nil :background "yellow" :foreground "black")
+       (set-face-attribute 'company-tooltip-annotation nil :foreground "red4")
+       (set-face-attribute 'company-tooltip-annotation-selection nil :foreground "red4")
+       (set-face-attribute 'company-tooltip-common nil :foreground "red" :background "yellow")
+       (set-face-attribute 'company-tooltip-common-selection nil :foreground "red")
+       (set-face-attribute 'company-tooltip-selection nil :background "orange1" :foreground "black")
+       (set-face-attribute 'company-tooltip-mouse nil :foreground "red" :background "green3")
+       (set-face-attribute 'company-tooltip-search nil :foreground "red" :background "yellow")
+       (set-face-attribute 'company-tooltip-search-selection nil :foreground "red" :background "orange1")))
   ;; ivy config
   (eval-after-load "ivy"
     '(progn
@@ -53,12 +80,16 @@
 		  (projectile-global-mode)
 		  (counsel-projectile-on))
 
+  ;; timer init
+  (run-with-timer
+   1 nil
+   (lambda ()
+     (require 'company)))
   ;; idle init
   (run-with-idle-timer
    1 nil
    (lambda ()
      (ivy-mode t)
-     (ac-config-default)
      (configure-cheatsheet))))
 
 (defun devtools-ivy-sort-files-function (_name candidates)
