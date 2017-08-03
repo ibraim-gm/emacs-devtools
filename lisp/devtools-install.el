@@ -84,8 +84,8 @@
   (quelpa '(web-mode           :repo "fxbois/web-mode"              :fetcher github :commit "v15"))
   (quelpa '(smartparens        :repo "Fuco1/smartparens"            :fetcher github :commit "1.10.1"))
   (quelpa '(rainbow-delimiters :repo "Fanael/rainbow-delimiters"    :fetcher github :commit "2.1.3"))
+  (quelpa '(pyvenv             :repo "jorgenschaefer/pyvenv"        :fetcher github :commit "v1.10"))
   (quelpa '(feature-mode       :repo "michaelklishin/cucumber.el"   :fetcher github :commit "v0.4" :files ("*.el" "i18n.yml" "snippets" "support")))
   (quelpa '(markdown-mode      :repo "jrblevin/markdown-mode"       :fetcher github :commit "v2.2"))
   (quelpa '(markdown-toc       :repo "ardumont/markdown-toc"        :fetcher github :commit "0.1.2")))
-
 (provide 'devtools-install)

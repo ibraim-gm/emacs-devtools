@@ -13,6 +13,7 @@
   "Initialize language-specific configuration"
   (lang-smartparens-init)
   (lang-rainbow-delimiters)
+  (lang-python-init)
   (lang-cucumber-init)
   (lang-web-init)
   (lang-markdown-init))
@@ -33,6 +34,31 @@
 (defun lang-rainbow-delimiters ()
   (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
   (add-hook 'web-mode-hook 'rainbow-delimiters-mode))
+
+(defun lang-python-init ()
+  (global-set-key (kbd "C-x p") 'devtools-pyvenv-workon)
+  (eval-after-load "python"
+    '(progn
+       (define-key python-mode-map (kbd "<f5>") 'run-python)
+       (define-key python-mode-map (kbd "<f11>") 'devtools-python-other-window)
+       (define-key inferior-python-mode-map (kbd "<f11>") 'devtools-python-other-window)))
+  (eval-after-load "pyvenv"
+    '(progn
+       (setenv "WORKON_HOME" "~/dev/envs"))))
+
+(defun devtools-pyvenv-workon ()
+  (interactive
+   (when (not pyvenv-mode)
+     (pyvenv-mode))
+   (call-interactively 'pyvenv-workon)))
+
+(defun devtools-python-other-window ()
+  (interactive)
+  (let ((a (python-shell-get-buffer))
+	(b (buffer-name)))
+    (if (string= (if (bufferp a) (buffer-name a) a) b)
+	(select-window (get-buffer-window (other-buffer (current-buffer) t)))
+      (call-interactively 'python-shell-switch-to-shell))))
 
 (defun lang-cucumber-init ()
   (setq feature-default-i18n-file (concat devtools-data-dir "i18n.yml"))
