@@ -21,6 +21,9 @@
   (global-set-key (kbd "C-c j") 'counsel-git-grep)
   (global-set-key (kbd "C-c k") 'counsel-ag)
   (global-set-key (kbd "C-x g") 'magit-status)
+  (global-set-key (kbd "<f11>") 'purpose-toggle-window-purpose-dedicated)
+  (global-set-key (kbd "C-c l l") 'purpose-load-window-layout)
+  (global-set-key (kbd "C-c l s") 'purpose-save-window-layout)
   (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
   ;; company config
   (eval-after-load "company"
@@ -90,6 +93,8 @@
    1 nil
    (lambda ()
      (ivy-mode t)
+     (require 'window-purpose)
+     (purpose-mode)
      (configure-cheatsheet))))
 
 (defun devtools-ivy-sort-files-function (_name candidates)
@@ -126,6 +131,8 @@
   (cheatsheet-add :group 'Navigation :key "C-c k" :description "counsel-ag")
   (cheatsheet-add :group 'Navigation :key "C-M-g" :description "dumb-jump-go")
   (cheatsheet-add :group 'Navigation :key "C-M-p" :description "dumb-jump-back")
+  (cheatsheet-add :group 'Layout :key "C-c l l" :description "purpose-load-window-layout")
+  (cheatsheet-add :group 'Layout :key "C-c l s" :description "purpose-save-window-layout")
   (cheatsheet-add :group 'Project :key "C-x g" :description "magit-status")
   (cheatsheet-add :group 'Project :key "C-x M-g" :description "magit-file-popup")
   (cheatsheet-add :group 'Project :key "C-c t" :description "project-explorer-toggle")
