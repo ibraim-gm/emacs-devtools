@@ -18,6 +18,10 @@
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
   (setq-default ediff-ignore-similar-regions t)
   (load-theme 'spacemacs-dark t)
+  (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+  (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+  (global-set-key (kbd "S-C-<down>") 'shrink-window)
+  (global-set-key (kbd "S-C-<up>") 'enlarge-window)
   (editor-maximize))
 
 (defun editor-init-title ()
