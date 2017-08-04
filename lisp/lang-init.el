@@ -13,6 +13,7 @@
   "Initialize language-specific configuration"
   (lang-smartparens-init)
   (lang-rainbow-delimiters)
+  (lang-purpose)
   (lang-python-init)
   (lang-cucumber-init)
   (lang-web-init)
@@ -35,13 +36,19 @@
   (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
   (add-hook 'web-mode-hook 'rainbow-delimiters-mode))
 
+(defun lang-purpose ()
+  (eval-after-load "window-purpose"
+    '(progn
+       (add-to-list 'purpose-user-mode-purposes '(python-mode . py))
+       (add-to-list 'purpose-user-mode-purposes '(inferior-python-mode . py-repl))
+       (purpose-compile-user-configuration))))
+
 (defun lang-python-init ()
   (global-set-key (kbd "C-x p") 'devtools-pyvenv-workon)
   (eval-after-load "python"
     '(progn
        (define-key python-mode-map (kbd "<f5>") 'run-python)
-       (define-key python-mode-map (kbd "<f11>") 'devtools-python-other-window)
-       (define-key inferior-python-mode-map (kbd "<f11>") 'devtools-python-other-window)))
+       (define-key python-mode-map (kbd "C-c C-c") 'devtools-python-shell-send-block)))
   (eval-after-load "pyvenv"
     '(progn
        (setenv "WORKON_HOME" "~/dev/envs"))))
@@ -52,13 +59,13 @@
      (pyvenv-mode))
    (call-interactively 'pyvenv-workon)))
 
-(defun devtools-python-other-window ()
+(defun devtools-python-shell-send-block ()
+  "Select a block of python code and send it to the interpreter."
   (interactive)
-  (let ((a (python-shell-get-buffer))
-	(b (buffer-name)))
-    (if (string= (if (bufferp a) (buffer-name a) a) b)
-	(select-window (get-buffer-window (other-buffer (current-buffer) t)))
-      (call-interactively 'python-shell-switch-to-shell))))
+  (save-excursion
+  (devtools-create-block-region-if-none)
+  (call-interactively 'python-shell-send-region)
+  (deactivate-mark)))
 
 (defun lang-cucumber-init ()
   (setq feature-default-i18n-file (concat devtools-data-dir "i18n.yml"))
