@@ -55,10 +55,10 @@
        (setenv "WORKON_HOME" "~/dev/envs"))))
 
 (defun devtools-pyvenv-workon ()
-  (interactive
+  (interactive)
    (when (not pyvenv-mode)
      (pyvenv-mode))
-   (call-interactively 'pyvenv-workon)))
+   (call-interactively 'pyvenv-workon))
 
 (defun devtools-python-shell-send-block ()
   "Select a block of python code and send it to the interpreter."
