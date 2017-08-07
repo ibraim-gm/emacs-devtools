@@ -12,8 +12,8 @@
 (defun lang/init ()
   "Initialize language-specific configuration"
   (lang-smartparens-init)
+  (lang-flycheck)
   (lang-rainbow-delimiters)
-  (global-flycheck-mode)
   (lang-purpose)
   (lang-python-init)
   (lang-cucumber-init)
@@ -32,6 +32,14 @@
     (indent-according-to-mode)
     (previous-line)
     (indent-according-to-mode)))
+
+(defun lang-flycheck ()
+  (eval-after-load "flycheck"
+    '(progn
+       (flycheck-add-mode 'javascript-eslint 'web-mode)
+       (when (memq system-type '(ms-dos windows-nt))
+	 (setq flycheck-xml-parser 'flycheck-parse-xml-region))))
+  (global-flycheck-mode))
 
 (defun lang-rainbow-delimiters ()
   (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
