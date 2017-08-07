@@ -13,6 +13,7 @@
   "Initialize language-specific configuration"
   (lang-smartparens-init)
   (lang-rainbow-delimiters)
+  (global-flycheck-mode)
   (lang-purpose)
   (lang-python-init)
   (lang-cucumber-init)
