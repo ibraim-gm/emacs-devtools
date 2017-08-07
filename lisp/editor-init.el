@@ -16,6 +16,7 @@
   (fset 'yes-or-no-p 'y-or-n-p)
   (recentf-mode t)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  (setq-default indent-tabs-mode nil)
   (setq-default ediff-ignore-similar-regions t)
   (load-theme 'spacemacs-dark t)
   (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
