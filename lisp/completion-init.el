@@ -43,10 +43,11 @@
     '(progn
        (setq company-idle-delay 0.3)
        (setq company-dabbrev-downcase nil)
+       (setq company-dabbrev-ignore-case t)
        (setq company-dabbrev-code-ignore-case t)
        (setq company-show-numbers t)
        (setq company-minimum-prefix-length 2)
-       (setq company-auto-complete t)
+       (setq company-auto-complete nil)
        (global-company-mode)
        (global-set-key (kbd "C-<tab>") 'company-complete-common-or-cycle)
        ;; revert the changes that spacemacs-theme do to company
