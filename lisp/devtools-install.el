@@ -77,7 +77,7 @@
   (quelpa '(company            :repo "company-mode/company-mode"    :fetcher github :commit "0.9.4"))
   (quelpa '(projectile         :repo "bbatsov/projectile"           :fetcher github :commit "v0.14.0" :files ("projectile.el")))
   (quelpa '(counsel-projectile :repo "ericdanan/counsel-projectile" :fetcher github :commit "aefd25c74718e66f180127c0d273eade887325b0"))
-  (quelpa '(project-explorer   :repo "sabof/project-explorer"       :fetcher github :commit "0.14.3"))
+  (quelpa '(sr-speedbar        :repo "emacsorphanage/sr-speedbar"   :fetcher github :commit "20140914.2339"))
   (quelpa '(window-purpose     :repo "bmag/emacs-purpose"           :fetcher github :commit "v1.6" :files (:defaults "layouts") :old-names (purpose)))
   (quelpa '(magit              :repo "magit/magit"                  :fetcher github :commit "2.10.3" :files ("lisp/magit*.el" "lisp/git-rebase.el" "Documentation/magit.texi" "Documentation/AUTHORS.md" "COPYING" (:exclude "lisp/magit-popup.el"))))
   (quelpa '(cheatsheet         :repo "darksmile/cheatsheet"         :fetcher github :commit "e4f8e0110167ea16a17a74517d1f10cb7ff805b8"))

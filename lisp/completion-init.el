@@ -10,7 +10,7 @@
 ;;;###autoload
 (defun completion/init ()
   "Initialize the completion framework"
-  (global-set-key (kbd "C-c t") 'project-explorer-toggle)
+  (global-set-key (kbd "C-c t") 'sr-speedbar-toggle)
   (setq counsel-git-grep-cmd-default "git --no-pager grep --full-name -n --no-color -i -e \"%s\"")
   (setq counsel-ag-base-command "ag --vimgrep --nocolor --nogroup %s")
   (global-set-key "\C-s" 'swiper)
@@ -82,6 +82,11 @@
 		   ("C-c p p" . counsel-projectile-switch-project))
 		  (projectile-global-mode)
 		  (counsel-projectile-on))
+  ;; sr-speedbar
+  (eval-after-load "sr-speedbar"
+    '(progn
+       (setq sr-speedbar-right-side nil)
+       (setq sr-speedbar-skip-other-window-p t)))
 
   ;; timer init
   (run-with-timer
