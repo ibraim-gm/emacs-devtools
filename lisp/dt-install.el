@@ -4,29 +4,27 @@
 ;;; Copyright (C) 2017 by it's authors.
 ;;; All rights reserved. See LICENSE, AUTHORS.
 ;;;
-;;; devtools-install.el --- emacs-devtools setup helpers
-
-(require 'devtools-common)
+;;; dt-install.el --- emacs-devtools setup helpers
 
 ;;;###autoload
-(defun devtools-install ()
+(defun dt-install ()
   "Install and configure emacs-devtools."
   (interactive)
   (setq custom-file "~/.emacs-custom")
-  (devtools-update-all-autoloads)
-  (devtools-install-packages)
-  (devtools-save-custom-values)
-  (devtools-generate-dot-emacs))
+  (dt-update-all-autoloads)
+  (dt-install-packages)
+  (dt-save-custom-values)
+  (dt-generate-dot-emacs))
 
 ;;;###autoload
-(defun devtools-install-packages ()
+(defun dt-install-packages ()
   "Install any missing packages."
   (interactive)
-  (install-and-configure-quelpa)
-  (install-all-quelpa-packages))
+  (dt--install-and-configure-quelpa)
+  (dt--install-all-quelpa-packages))
 
 ;;;###autoload
-(defun devtools-generate-dot-emacs ()
+(defun dt-generate-dot-emacs ()
   "Creates a .emacs file with devtools inititalization code."
   (interactive)
   (with-current-buffer (find-file-noselect (expand-file-name "~/.emacs"))
@@ -38,19 +36,17 @@
     (insert "  (setq package-enable-at-startup nil)")(newline)
     (insert "  (package-initialize)")(newline)
     (newline)
-    (insert "  (defconst devtools-src-dir \"" devtools-src-dir "\")")(newline)
-    (insert "  (defconst devtools-loaddefs-file \"" devtools-loaddefs-file "\")")(newline)
-    (newline)
     (insert "  (setq custom-file \"~/.emacs-custom\")")(newline)
     (insert "  (when (= (length command-line-args) 1)")(newline)
     (insert "    (setq default-directory \"~/\"))")(newline)
     (insert "  (load custom-file :noerror t)")(newline)
-    (insert "  (load devtools-loaddefs-file)")(newline)
-    (insert "  (add-to-list 'load-path devtools-src-dir)")(newline)
+    (insert "  (load \"" (concat user-emacs-directory "dt-const.el") "\")")(newline)
+    (insert "  (load dt-loaddefs-file)")(newline)
+    (insert "  (add-to-list 'load-path dt-src-dir)")(newline)
     (newline)
-    (insert "  (editor/init)")(newline)
-    (insert "  (completion/init)")(newline)
-    (insert "  (lang/init)")(newline)
+    (insert "  (dt-editor-init)")(newline)
+    (insert "  (dt-completion-init)")(newline)
+    (insert "  (dt-lang-init)")(newline)
     (newline)
     (insert "  (run-with-idle-timer")(newline)
     (insert "   5 nil")(newline)
@@ -59,7 +55,7 @@
     (save-buffer))
   (kill-buffer ".emacs"))
 
-(defun install-and-configure-quelpa ()
+(defun dt--install-and-configure-quelpa ()
   (setq quelpa-update-melpa-p nil)
   (unless (require 'quelpa nil t)
     (with-temp-buffer
@@ -67,7 +63,7 @@
       (eval-buffer))
     (require 'quelpa)))
 
-(defun install-all-quelpa-packages ()
+(defun dt--install-all-quelpa-packages ()
   (quelpa '(spacemacs-theme    :repo "nashamri/spacemacs-theme"     :fetcher github :commit "b26162e8974c532b3241a43c8f194a340636e9ea"))
   (quelpa '(async              :repo "jwiegley/emacs-async"         :fetcher github :commit "v1.9.2"))
   (quelpa '(ivy                :repo "abo-abo/swiper"               :fetcher github :commit "0.9.1" :files (:defaults (:exclude "swiper.el" "counsel.el" "ivy-hydra.el") "doc/ivy-help.org")))
@@ -91,4 +87,4 @@
   (quelpa '(markdown-mode      :repo "jrblevin/markdown-mode"       :fetcher github :commit "v2.2"))
   (quelpa '(markdown-toc       :repo "ardumont/markdown-toc"        :fetcher github :commit "0.1.2")))
 
-(provide 'devtools-install)
+(provide 'dt-install)

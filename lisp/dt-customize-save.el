@@ -4,11 +4,11 @@
 ;;; Copyright (C) 2017 by it's authors.
 ;;; All rights reserved. See LICENSE, AUTHORS.
 ;;;
-;;; devtools-customize-save.el --- Save values in customize
+;;; dt-customize-save.el --- Save values in customize
 ;;; variables
 
 ;;;###autoload
-(defun devtools-save-custom-values ()
+(defun dt-save-custom-values ()
   "Setup the values of custom confurations to make editing easier"
   (interactive)
   (customize-save-variable 'inhibit-startup-screen t)
@@ -61,4 +61,4 @@
   (customize-save-variable 'ediff-use-last-dir t)
   (customize-save-variable 'ediff-diff-options " -b "))
 
-(provide 'devtools-customize-save)
+(provide 'dt-customize-save)

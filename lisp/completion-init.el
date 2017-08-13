@@ -8,7 +8,7 @@
 ;;; functionality
 
 ;;;###autoload
-(defun completion/init ()
+(defun dt-completion-init ()
   "Initialize the completion framework"
   (global-set-key (kbd "C-c t") 'sr-speedbar-toggle)
   (setq counsel-git-grep-cmd-default "git --no-pager grep --full-name -n --no-color -i -e \"%s\"")
@@ -57,11 +57,11 @@
     '(progn
        (setq ivy-use-virtual-buffers t)
        (setq ivy-re-builders-alist
-	     '((t . devtools-ivy--regex-plus)))
+	     '((t . dt--ivy--regex-plus)))
        (setq ivy-sort-matches-functions-alist
 	     '((t)
 	       (ivy-switch-buffer . ivy-sort-function-buffer)
-	       (counsel-find-file . devtools-ivy-sort-files-function)))
+	       (counsel-find-file . dt--ivy-sort-files-function)))
        (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
        (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)))
 
@@ -100,9 +100,9 @@
      (ivy-mode t)
      (require 'window-purpose)
      (purpose-mode)
-     (configure-cheatsheet))))
+     (dt--configure-cheatsheet))))
 
-(defun devtools-ivy-sort-files-function (_name candidates)
+(defun dt--ivy-sort-files-function (_name candidates)
   "Sort candidates by size, and then by lexicographic order."
   (cl-flet ((remove-suffix (lambda (s) (if (string-suffix-p "/" s) (substring s 0 -1) s))))
     (cl-sort (copy-sequence candidates)
@@ -113,7 +113,7 @@
 		      (len2 (length str2)))
 		 (if (= len1 len2) (string< str1 str2) (< len1 len2)))))))
 
-(defun devtools-ivy--regex-plus (str)
+(defun dt--ivy--regex-plus (str)
   "Like ivy-rregex-plus, but always trating `.` as a literal character."
   (ivy--regex-plus (replace-regexp-in-string "\\." "\\." str nil t)))
 
@@ -128,7 +128,7 @@
 				    (,(cdr e)))))
 	       commands)))
 
-(defun configure-cheatsheet ()
+(defun dt--configure-cheatsheet ()
   (cheatsheet-add :group 'Display :key "C-x C-+" :description "text-scale-adjust")
   (cheatsheet-add :group 'Navigation :key "C-c r" :description "iy-resume")
   (cheatsheet-add :group 'Navigation :key "C-c g" :description "counsel-git")

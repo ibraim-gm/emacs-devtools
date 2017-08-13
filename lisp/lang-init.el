@@ -6,10 +6,8 @@
 ;;;
 ;;; lang-init.el --- Languague-specific initialization
 
-(require 'devtools-common)
-
 ;;;###autoload
-(defun lang/init ()
+(defun dt-lang-init ()
   "Initialize language-specific configuration"
   (lang-smartparens-init)
   (lang-flycheck)
@@ -54,35 +52,35 @@
        (define-key purpose-mode-map (kbd "C-x b") 'ivy-switch-buffer))))
 
 (defun lang-python-init ()
-  (global-set-key (kbd "C-x p") 'devtools-pyvenv-workon)
+  (global-set-key (kbd "C-x p") 'dt-pyvenv-workon)
   (eval-after-load "python"
     '(progn
        (define-key python-mode-map (kbd "<f5>") 'run-python)
-       (define-key python-mode-map (kbd "C-c C-c") 'devtools-python-shell-send-block)))
+       (define-key python-mode-map (kbd "C-c C-c") 'dt-python-shell-send-block)))
   (eval-after-load "pyvenv"
     '(progn
        (setenv "WORKON_HOME" "~/dev/envs"))))
 
-(defun devtools-pyvenv-workon ()
+(defun dt-pyvenv-workon ()
   (interactive)
    (when (not pyvenv-mode)
      (pyvenv-mode))
    (call-interactively 'pyvenv-workon))
 
-(defun devtools-python-shell-send-block ()
+(defun dt-python-shell-send-block ()
   "Select a block of python code and send it to the interpreter."
   (interactive)
   (save-excursion
-  (devtools-create-block-region-if-none)
+  (dt-create-block-region-if-none)
   (call-interactively 'python-shell-send-region)
   (deactivate-mark)))
 
 (defun lang-cucumber-init ()
-  (setq feature-default-i18n-file (concat devtools-data-dir "i18n.yml"))
+  (setq feature-default-i18n-file (concat dt-data-dir "i18n.yml"))
   (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode)))
 
 (defun lang-web-init ()
-  (add-hook 'web-mode-hook 'devtools-web-mode-hook)
+  (add-hook 'web-mode-hook 'dt-web-mode-hook)
   (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -91,7 +89,7 @@
        (setq web-mode-content-types-alist
 	     '(("jsx" . "\\.js[x]?\\'"))))))
 
-(defun devtools-web-mode-hook ()
+(defun dt-web-mode-hook ()
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2)

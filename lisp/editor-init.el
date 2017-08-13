@@ -8,11 +8,11 @@
 ;;; by CONFIGURE
 
 ;;;###autoload
-(defun editor/init ()
+(defun dt-editor-init ()
   "Setup values that aren't supported by CONFIGURE."
   (set-face-attribute 'default nil :font "DejaVu Sans Mono-10")
   (modify-frame-parameters nil '((wait-for-wm . nil)))
-  (editor-init-title)
+  (dt--editor-init-title)
   (fset 'yes-or-no-p 'y-or-n-p)
   (recentf-mode t)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -23,14 +23,14 @@
   (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
   (global-set-key (kbd "S-C-<down>") 'shrink-window)
   (global-set-key (kbd "S-C-<up>") 'enlarge-window)
-  (editor-maximize))
+  (dt--editor-maximize))
 
-(defun editor-init-title ()
+(defun dt--editor-init-title ()
   (setq frame-title-format
 	(list (format "%s %%S: %%j " (system-name))
 	      '(buffer-file-name "%f" (dired-directory dired-directory "%b")))))
 
-(defun editor-maximize ()
+(defun dt--editor-maximize ()
   (when (memq system-type '(ms-dos windows-nt))
     (w32-send-sys-command 61488))
   (when (memq system-type '(gnu gnu/linux))

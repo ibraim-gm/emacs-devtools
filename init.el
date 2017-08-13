@@ -9,11 +9,9 @@
 (package-initialize)
 (setq package-enable-at-startup nil)
 
-(let* ((emacs.d (file-name-as-directory user-emacs-directory))
-       (src-dir (file-name-as-directory (concat emacs.d "lisp"))))
-  (add-to-list 'load-path src-dir)
-  (require 'devtools-common)
-  (devtools-update-all-autoloads))
+(load (concat user-emacs-directory "dt-const.el"))
+(add-to-list 'load-path dt-src-dir)
+(dt-update-all-autoloads)
 
 ;;--- Missing from 'general.el'
 ;; Enhancing the main aspects of the UI
