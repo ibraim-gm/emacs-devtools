@@ -1,11 +1,23 @@
-;;; -*- coding: utf-8-unix; -*-
-;;; Emacs-DevTools - An easy emacs setup for developers
-;;;
-;;; Copyright (C) 2017 by it's authors.
-;;; All rights reserved. See LICENSE, AUTHORS.
-;;;
 ;;; init.el --- Initial setup
 
+;; Emacs-DevTools - An easy emacs setup for developers
+;; Copyright (C) 2017 by it's authors.
+;;
+;; Author: Rafael Ibraim <ibraim.gm@gmail.com>
+;; URL: https://github.com/ibraimgm/emacs-devtools
+;;
+;; This file is NOT part of GNU Emacs.
+;; See LICENSE, AUTHORS.
+
+;;; Commentary:
+;;
+;; This file is the main initialization code when the user
+;; starts Emacs without a proper init file.
+;;
+;; After that, running `M-x dt-install` install all the needed
+;; packages and generates an `.emacs` in the user current directory
+
+;;; Code:
 (package-initialize)
 (setq package-enable-at-startup nil)
 
@@ -14,17 +26,6 @@
 (dt-update-all-autoloads)
 
 ;;--- Missing from 'general.el'
-;; Enhancing the main aspects of the UI
-;; (set-face-attribute 'default nil :font "DejaVu Sans Mono-9")
-
-;; Make editing easier
-;; (ido-mode 1)                              ; Interactive Do Things: Simply amazing
-;; (ido-everywhere 1)                        ; Activate IDO everywhere we can
-;; (flx-ido-mode 1)                          ; Use flx-ido search algorithm
-;; (setq ido-enable-flex-matching t)         ; Enable flexible matching
-;; (global-set-key (kbd "M-x") 'smex)        ; Use smex instead of regular M-x
-;; (setq tags-revert-without-query 1)        ; Tags should be reloaded automatically
-
 ;; First column marker in red.
 ;; (defun custom-column-marker-setter (orig-fun &rest args)
 ;;   (set-face-background column-marker-1-face "red")
@@ -48,3 +49,10 @@
 ;; (put 'upcase-region 'disabled nil)
 
 ;; (global-set-key [C-f12] 'eshell)
+
+;; Local Variables:
+;; coding: utf-8-unix
+;; End:
+
+(provide 'init)
+;;; init.el ends here
