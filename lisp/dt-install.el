@@ -82,6 +82,7 @@
   (quelpa '(smartparens        :repo "Fuco1/smartparens"            :fetcher github :commit "1.10.1"))
   (quelpa '(rainbow-delimiters :repo "Fanael/rainbow-delimiters"    :fetcher github :commit "2.1.3"))
   (quelpa '(flycheck           :repo "flycheck/flycheck"            :fetcher github :commit "ed08ce36e5cc97cfabb84ccaba84a00db917f082"))
+  (quelpa '(yasnippet          :repo "joaotavora/yasnippet"         :fetcher github :commit "0.12.1" :files ("yasnippet.el" "snippets")))
   (quelpa '(pyvenv             :repo "jorgenschaefer/pyvenv"        :fetcher github :commit "v1.10"))
   (quelpa '(feature-mode       :repo "michaelklishin/cucumber.el"   :fetcher github :commit "v0.4" :files ("*.el" "i18n.yml" "snippets" "support")))
   (quelpa '(markdown-mode      :repo "jrblevin/markdown-mode"       :fetcher github :commit "v2.2"))
