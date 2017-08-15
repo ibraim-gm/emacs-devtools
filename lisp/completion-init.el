@@ -123,8 +123,9 @@
 (defun dt-config-projectile ()
   (global-set-key (kbd "C-c p m") 'projectile-commander)
   (global-set-key (kbd "C-c p t") 'projectile-toggle-between-implementation-and-test)
-  (global-set-key (kbd "C-c p P") 'projectile-test-project)
-  (global-set-key (kbd "C-c p c") 'projectile-compile-project)
+  (global-set-key (kbd "<f9>") 'projectile-run-project)
+  (global-set-key (kbd "C-<f9>") 'projectile-compile-project)
+  (global-set-key (kbd "C-S-<f9>") 'projectile-test-project)
   (global-set-key (kbd "C-c p i") 'projectile-invalidate-cache)
   (global-set-key (kbd "C-c p b") 'counsel-projectile-switch-to-buffer)
   (global-set-key (kbd "C-c p d") 'counsel-projectile-find-dir)
@@ -139,7 +140,7 @@
        (counsel-projectile-on))))
 
 (defun dt-config-project-explorer ()
-  (global-set-key (kbd "C-c t") 'sr-speedbar-toggle)
+  (global-set-key (kbd "<f8>") 'sr-speedbar-toggle)
   (eval-after-load "sr-speedbar"
     '(progn
        (setq sr-speedbar-right-side nil)
@@ -157,7 +158,10 @@
   (cheatsheet-add :group 'Layout :key "C-c l s" :description "purpose-save-window-layout")
   (cheatsheet-add :group 'Project :key "C-x g" :description "magit-status")
   (cheatsheet-add :group 'Project :key "C-x M-g" :description "magit-file-popup")
-  (cheatsheet-add :group 'Project :key "C-c t" :description "project-explorer-toggle")
+  (cheatsheet-add :group 'Project :key "<f8>" :description "sr-speedbar-toggle")
+  (cheatsheet-add :group 'Project :key "<f9>" :description "projectile-run-project")
+  (cheatsheet-add :group 'Project :key "C-<f9>" :description "projectile-compile-project")
+  (cheatsheet-add :group 'Project :key "C-S-<f9>" :description "projectile-test-project")
   (cheatsheet-add :group 'Project :key "C-c p p" :description "counsel-projectile-switch-project")
   (cheatsheet-add :group 'Project :key "C-c p f" :description "counsel-projectile-find-file")
   (cheatsheet-add :group 'Project :key "C-c p d" :description "counsel-projectile-find-dir")
