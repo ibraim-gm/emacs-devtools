@@ -1,0 +1,14 @@
+# contributor: Rafael Ibraim <ibraim.gm@gmail.com>
+# name: .dirlocals.el Template
+# --
+((nil . (;; force coding
+	 (buffer-file-coding-system . utf-8)
+	 ;; fix indenting
+	 (indent-tabs-mode . nil)
+	 ;; enhance projectile information
+	 (projectile-globally-ignored-files . ("MyBinaryFile"))
+	 ;; (projectile-project-name . "your-project-name-here")
+	 ;; (projectile-project-compilation-cmd . "your-command-here")
+	 ;; (projectile-project-test-cmd . "your-command-here")
+	 ;; (projectile-project-run-cmd . "your-command-here")
+	 )))

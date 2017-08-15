@@ -20,7 +20,6 @@
 
   ;; immediate/autoload config
   (global-set-key (kbd "C-x g") 'magit-status)
-  (global-set-key (kbd "C-,") 'yas-expand-from-trigger-key)
   (dt-config-dumb-jump)
   (dt-config-projectile)
   (dt-config-project-explorer)
@@ -30,9 +29,7 @@
    1 nil
    (lambda ()
      (require 'window-purpose)
-     (require 'company)
-     (require 'yasnippet)
-     (yas-global-mode 1)))
+     (require 'company)))
 
   ;; idle init
   (run-with-idle-timer

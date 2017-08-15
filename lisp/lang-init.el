@@ -17,6 +17,7 @@
   (dt-lang-smartparens)
   (dt-lang-rainbow-delimiters)
   (dt-lang-purpose)
+  (dt-lang-yasnippet)
   (dt-lang-python)
   (dt-lang-cucumber)
   (dt-lang-web)
@@ -58,6 +59,24 @@
        (add-to-list 'purpose-user-mode-purposes '(inferior-python-mode . py-repl))
        (purpose-compile-user-configuration)
        (define-key purpose-mode-map (kbd "C-x b") 'ivy-switch-buffer))))
+
+(defun dt-lang-yasnippet ()
+  (add-hook 'prog-mode-hook #'dt--enable-yasnippet)
+  (add-hook 'text-mode-hook #'dt--enable-yasnippet)
+  (eval-after-load "yasnippet"
+    '(progn
+       (when (not (boundp 'warning-suppress-types))
+	 (setq warning-suppress-types nil))
+       (add-to-list 'warning-suppress-types '(yasnippet backquote-change))
+       (yas-reload-all))))
+
+(defun dt--enable-yasnippet ()
+  (interactive)
+  (let ((buff (buffer-name (current-buffer))))
+    (when (cond
+           ((string= buff "*scratch*") nil)
+           (t t))
+      (yas-minor-mode 1))))
 
 (defun dt-lang-python ()
   (global-set-key (kbd "C-x p") 'dt-pyvenv-workon)

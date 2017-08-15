@@ -1,0 +1,40 @@
+# contributor: Rafael Ibraim <ibraim.gm@gmail.com>
+# name: Template for .gitattributes
+# --
+# -*- coding:utf-8-unix; -*-
+
+# By default, always normalize files to native line endings
+# Uncomment the line above to force lf on source files.
+# You can also add the eol attribute on a specific file pattern, as listed below
+* text=auto
+[attr]source text=auto, eol=lf
+
+# Documentation and other kinds of text
+*.md text
+
+# C source files
+*.c source
+*.h source
+CMakeLists.txt source
+
+# Lisp / Elisp / Scheme
+*.lisp source
+*.scm  source
+*.el   source
+
+# Haskell
+*.hs    source
+*.cabal source
+
+# PHP, javascript and others
+*.js  source
+*.php source
+*.au3 source
+*.feature source
+
+# Binary files
+*.bmp  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
