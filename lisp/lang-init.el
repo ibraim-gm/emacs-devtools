@@ -45,8 +45,15 @@
   (eval-after-load "flycheck"
     '(progn
        (flycheck-add-mode 'javascript-eslint 'web-mode)
+       (advice-add 'flycheck-eslint-config-exists-p :around 'dt--advice-flycheck-eslint-config-exists-p)
        (when (memq system-type '(ms-dos windows-nt))
 	 (setq flycheck-xml-parser 'flycheck-parse-xml-region)))))
+
+(defvar dt-skip-eslint-config nil)
+
+(defun dt--advice-flycheck-eslint-config-exists-p (old-function &rest args)
+  (if dt-skip-eslint-config t
+    (apply old-function args)))
 
 (defun dt-lang-rainbow-delimiters ()
   (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
