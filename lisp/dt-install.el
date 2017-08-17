@@ -84,6 +84,7 @@
   (quelpa '(flycheck           :repo "flycheck/flycheck"            :fetcher github :commit "ed08ce36e5cc97cfabb84ccaba84a00db917f082"))
   (quelpa '(yasnippet          :repo "joaotavora/yasnippet"         :fetcher github :commit "0.12.1" :files ("yasnippet.el" "snippets")))
   (quelpa '(pyvenv             :repo "jorgenschaefer/pyvenv"        :fetcher github :commit "v1.10"))
+  (quelpa '(elpy               :repo "jorgenschaefer/elpy"          :fetcher github :commit "1.16.0" :files ("*.el" "NEWS.rst" "snippets" "elpy")))
   (quelpa '(feature-mode       :repo "michaelklishin/cucumber.el"   :fetcher github :commit "v0.4" :files ("*.el" "i18n.yml" "snippets" "support")))
   (quelpa '(markdown-mode      :repo "jrblevin/markdown-mode"       :fetcher github :commit "v2.2"))
   (quelpa '(markdown-toc       :repo "ardumont/markdown-toc"        :fetcher github :commit "0.1.2")))

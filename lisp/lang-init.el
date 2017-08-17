@@ -32,6 +32,7 @@
   (require 'smartparens-config)
   (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
   (add-hook 'web-mode-hook 'smartparens-mode)
+  (add-hook 'python-mode-hook 'smartparens-mode)
   (sp-local-pair 'web-mode "{" nil :post-handlers '(:add dt--curly-braces-on-enter) :when '(("RET"))))
 
 (defun dt--curly-braces-on-enter (id action context)
@@ -57,6 +58,7 @@
 
 (defun dt-lang-rainbow-delimiters ()
   (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+  (add-hook 'python-mode-hook 'rainbow-delimiters-mode)
   (add-hook 'web-mode-hook 'rainbow-delimiters-mode))
 
 (defun dt-lang-purpose ()
@@ -89,25 +91,45 @@
   (global-set-key (kbd "C-x p") 'dt-pyvenv-workon)
   (eval-after-load "python"
     '(progn
+       (setenv "JUPYTER_CONSOLE_TEST" "1")
+       (setq python-shell-prompt-detect-enabled nil)
+       (setq python-shell-interpreter "jupyter-console")
+       (setq python-shell-interpreter-args nil)
        (define-key python-mode-map (kbd "<f5>") 'run-python)
-       (define-key python-mode-map (kbd "C-c C-c") 'dt-python-shell-send-block)))
+       (elpy-enable)))
   (eval-after-load "pyvenv"
     '(progn
-       (setenv "WORKON_HOME" "~/dev/envs"))))
+       (setenv "WORKON_HOME" "~/dev/envs")))
+  (eval-after-load "elpy"
+    '(progn
+       (define-key elpy-mode-map (kbd "C-c C-l") 'dt-python-shell-send-buffer)
+       (define-key elpy-mode-map (kbd "C-c C-c") 'dt-python-shell-send-block)
+       (define-key elpy-mode-map (kbd "<M-right>") nil)
+       (define-key elpy-mode-map (kbd "<M-left>") nil)
+       (define-key elpy-mode-map (kbd "<M-up>") nil)
+       (define-key elpy-mode-map (kbd "<M-down>") nil))))
+
+(defun dt-python-shell-send-buffer ()
+  (interactive)
+  (when (region-active-p)
+    (deactivate-mark))
+  (elpy-shell-send-region-or-buffer))
 
 (defun dt-pyvenv-workon ()
   (interactive)
    (when (not pyvenv-mode)
      (pyvenv-mode))
-   (call-interactively 'pyvenv-workon))
+   (call-interactively 'pyvenv-workon)
+   (when (not (executable-find python-shell-interpreter))
+     (message "Python Interpreter `%s' not found. Install it and try running `elpy-config'." python-shell-interpreter)))
 
 (defun dt-python-shell-send-block ()
   "Select a block of python code and send it to the interpreter."
   (interactive)
   (save-excursion
-  (dt-create-block-region-if-none)
-  (call-interactively 'python-shell-send-region)
-  (deactivate-mark)))
+    (dt-create-block-region-if-none)
+    (call-interactively 'python-shell-send-region)
+    (deactivate-mark)))
 
 (defun dt-lang-cucumber ()
   (setq feature-default-i18n-file (concat dt-data-dir "i18n.yml"))
