@@ -107,6 +107,8 @@
 
 (defun dt-config-purpose/timer ()
   (global-set-key (kbd "<f11>") 'purpose-toggle-window-purpose-dedicated)
+  (global-set-key (kbd "C-<f11>") 'purpose-reset-window-layout)
+  (global-set-key (kbd "C-S-<f11>") 'purpose-delete-non-dedicated-windows)
   (global-set-key (kbd "C-c l l") 'purpose-load-window-layout)
   (global-set-key (kbd "C-c l s") 'purpose-save-window-layout)
   (eval-after-load "window-purpose"
