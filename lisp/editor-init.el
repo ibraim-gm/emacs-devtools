@@ -19,6 +19,9 @@
   (setq-default indent-tabs-mode nil)
   (setq-default ediff-ignore-similar-regions t)
   (load-theme 'spacemacs-dark t)
+  (setq browse-url-generic-program
+	(executable-find (or (getenv "BROWSER") "opera"))
+	browse-url-browser-function 'browse-url-generic)
   (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
   (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
   (global-set-key (kbd "S-C-<down>") 'shrink-window)
