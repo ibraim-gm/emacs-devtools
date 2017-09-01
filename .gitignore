@@ -13,3 +13,9 @@ TAGS
 projectile-bookmarks.eld
 projectile.cache
 smex-items
+quelpa/
+project-explorer-cache/
+recentf
+*~
+lisp/loaddefs.el
+README.html

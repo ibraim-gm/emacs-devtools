@@ -1,7 +1,0 @@
-# contributor: Rafael Ibraim <ibraim.gm@gmail.com>
-# name: Emacs coding variable (utf8-unix)
-# --
-$0
-# Local Variables:
-# coding: utf-8
-# End:

@@ -1,3 +1,5 @@
+# Emacs Devtools #
+
 ## About
 
 `emacs-devtools` is pre-configured collection of emacs files to make the live of
@@ -23,154 +25,51 @@ and/or file a bug on [GitHub](https://github.com/ibraim-gm/emacs-devtools).
 
 ## Install
 
+First of all, make sure you do not have a `.emacs` file in your home. Then, just clone
+the repository in `~.emacs.d`:
+
     git clone https://github.com/ibraim-gm/emacs-devtools.git ~/.emacs.d
-    cd ~/.emacs.d && git submodule init && git submodule update (Only if the desired feature requires it)
-    cp ~/.emacs.d/samples/dot_emacs ~/.emacs
-    cp ~/.emacs.d/samples/dot_emacs-custom ~/.emacs-custom
-    cp ~/.emacs.d/samples/dot_muse-projects ~/.muse-projects (Only if you intend to use MUSE)
-    cp ~/.emacs.d/samples/dot_gnus.el ~/.gnus.el (Only if you intend to use gnus)
-    cp -r ~/.emacs.d/samples/gtd/ ~/.gtd (Only if you want the GTD features)
 
-Now, open the `.emacs` and follow the comments to configure what you
-need. Remember that when you start emacs for the first time or when you enable a
-new feature and restart emacs, it may take a while to donwload the required
-packages and byte-compile them (the compilation buffer may be also show in this
-process). Most packages can be used right after being downloaded, but some of
-then (notably, ECB) requires that you reopen your emacs to see the changes.
+Now, start emacs and execute `M-x dt-install`. This will download and install all
+packages, and generate a new `.emacs` file in your home directory. After restarting
+emacs, devtools will be installed and configured.
 
-Also, some of the features may require code that is available only on GitHub (or equivalent).
-For those cases, the `module` folder contains the necessary references to the  *git submodules*;
-you only need to run `git submodule init` followed by `git submodule update` and everything will
-be checked out correctly.
+**Windows Only**: If you have errors when trying to donwload the packages, try
+running emacs from inside a git terminal. After installing successfully, you can
+run emacs from outside the git terminal too.
 
 ## Features
+
+A lot of the features work seamlessly integrated in your editing (ex: smart parens, rainbow
+parens, ivy, auto completion, etc.) but some of them have additional commands bound by default.
+
+When in doubt, you can check `lisp/completion-init.el` for general goodies; while `lisp/lang-init.el`
+have language-specific configurations and extra bindings. Don't be shy!
+
+### Querying for help ###
+
+To help you learn the new features, you can try `C-?` to show a list of generic, but useful
+commands. Also, typing `M-x` will show the available commands/keys if you wait a little.
+
+### Resizing and moving between windows ###
+
+You can easy move between existing frames with `M-<arrow>`. To enlarge or shrink a frame, you
+can use `C-S-<arrow>`.
+
+### Layouts ###
+
+You can easily create and load custom frame layouts. Just use `C-c l l` to load or `C-c l s`
+to save. You can toggle window dedication with `<f11>`.
+
+### Magit and speedbar ###
+
+You can have the power of magit with `C-x g`. Also, `<f8>` toggles a handy speedbar, that automatically
+integrates with your projectile projects.
 
 Note that **all features are disabled by default**. To enable them, you need to
 edit you newly-copied `.emacs` and uncomment teh desired sections.  The
 "requires" text of each feature is only informative: everything is installed
 automagically as long as you have an active internet connection.
-
-### `general` (requires [eshell](http://www.gnu.org/software/emacs/manual/html_node/eshell) and [column-marker](http://emacswiki.org/emacs/column-marker.el))
-
-*    Change the font to *DeJa Vu Sans Mono*.
-*    Do not show the startup screen and the startup message.
-*    Removes the toolbar and sets the scrollbar to the right side of the screen.
-*    Show column and line numbers on buffers.
-*    Show trailing whitespaces in red.
-*    When saving a buffer, ensure a newline exists at the end of file and remove all trailing whitespace.
-*    Always enable `transient-mark` and always shows the current line highlighted.
-*    By default, change indentation to 2 spaces. No tabs allowed.
-*    When doing a search, highligh the terms in buffer.
-*    Enable the use of the mouse wheel.
-*    Change `yes` and `no` questions on emacs for `y` or `n`.
-*    Set the `fill-column` to 80.
-*    Enables [IDO mode](http://emacswiki.org/emacs/InteractivelyDoThings).
-*    Force emacs to use a single directory (`~/.emacs.d/backups`) to save its backup files, instead of scattering them all around.
-*    Minor (cosmetic) improvements on `dired` and `ediff` modes.
-*    Start a (e)shell inside emacs when you press `C-f12`.
-*    On MS-Windows, make sure emacs starts maximized.
-
-### `colors` (requires [color-theme-solarized](https://github.com/sellout/emacs-color-theme-solarized))
-
-*    Enables the *solarized dark* color-theme.
-*    On `lisp-mode`, add some extra regular expressions to colorize.
-
-### `ac` (requires [auto-complete](https://github.com/auto-complete/auto-complete))
-
-Enables the amazing auto-complete mode on nearly anything. Some of the default
-colors os the popup window are changed to look a bit better with the solarized
-theme.
-
-### `ide` (requires [CEDET](http://cedet.sourceforge.net/), [ECB](http://ecb.sourceforge.net/), [EScreen](http://www.emacswiki.org/emacs/EmacsScreen), [rainbow-delimiters](https://github.com/jlr/rainbow-delimiters) and [projectile](https://github.com/bbatsov/projectile))
-
-*    Enable CEDET and the most useful semantic modes.
-*    Enable the use of rainbow delimiters on *all* programming languages.
-*    `f9` will (de)activate ECB and it's IDE-like layout. The `samples/dot_emacs-custom` file contain a pre-configured layout.
-*    `f11` runs `other-window`. Very useful to switch between code and compilation/error windows.
-*    `f4` will prompt you a directory and a regexp to do a grep search of files.
-*    `M-fN` will switch to a different 'screen' inside emacs and remember in wich window ECB was activated. You can, for example, `f9` and start working on a project,
-     then `M-f2` and start a shell and then `M-f3` to do something else, etc. Note that only one screen is able to remember ECB activation; if you switch screens and
-     reactivate ECB, the last activation will be forgotten.
-*    `C-f5` will call `projectile-compile`.
-*    `C-M-f5` will call `projectile-test-project`.
-*    `C-f4` will close all buffers of the project with `projectile-kill-buffers`.
-*    `C-M-f2` will call `projectile-find-file`.
-*    `C-M-f2` will call `projectile-switch-project`.
-*    `C-f2` will call  `projectile-dired`, or switch to a project, if none is present.
-
-### `custom-muse`
-*    Loads the project definitions at `~/.muse-projects` (see directory `sample`). You can just copy the sample file and change to your needs.
-*    `F5` will publish the current opened project (`muse-project-publish`)
-
-### `custom-yasnippet`
-*    Installs `yasnippet`. Also, provides some pre-configured basic snippets.
-
-### `lang-cucumber` (requires [feature-mode](https://github.com/michaelklishin/cucumber.el))
-
-Enables highlighting for [Gherkin](https://github.com/cucumber/gherkin) user stories.
-
-### `lang-latex` (requires [auctex](http://www.gnu.org/software/auctex/) and, obviously, a working latex installation.)
-
-*    When working on latex files, activate `fill-mode` and set compilation options to view/generate PDF files.
-*    `C-c C-c` will compile the current latex file. If the file is already compiled a prompt to open the file will be show.
-*    `C-c C-l` will preview the output file.
-
-### `lang-clojure` (requires [clojure-mode](https://github.com/technomancy/clojure-mode) and [nrepl](https://github.com/kingtim/nrepl.el))
-
-*    Enable useful modes, like rainbow and eldoc when using nrepl.
-*    Auto-indent on new line.
-*    `f5` when in `clojure-mode` starts a nrepl instance with the current leiningen project loaded.
-
-### `lang-php` (requires [php-mode](http://emacswiki.org/emacs/PhpMode))
-
-Auto-indent on new line. It also identify a broader range of files as "php".
-
-### `lang-javascript` and `lang-html`
-
-Auto-indent on new line. It also set javascript indent offset to 2 spaces.
-
-### `lang-c`
-
-*    Sets the default formatting style to `"linux"`.
-*    Sets the default indent offset to 2 spaces.
-*    Auto-indent on a new line.
-*    Smarter indentation for comment blocks `/* ... */`
-*    If you intend to use CMake, consider enabling `lang-cmake` (need to use `git submodule`)
-
-### `lang-haskell` (requires [haskell-mode](https://github.com/haskell/haskell-mode))
-
-*    Both `<return>` and `C-<return>` offer different indentation mechanisms.
-*    `C-c C-l` and `f5` load the current file on the haskell process. If no process exists, a new one is created.
-*    `C-c C-z` switch to the haskell repl buffer.
-*    `C-c C-c` calls the "cabal build" process on the opened project.
-*    `C-c c` prompts the user for a Cabal command to run.
-*    `C-c C-t` calls `:type` in the current identifier.
-*    `C-C C-i` calls `:info` in the current identifier.
-*    The cabal build shortcuts work on `.cabal` files too.
-
-### `lang-markdown` (requires [markdown-mode](http://jblevins.org/projects/markdown-mode/) and markdown installed)
-
-*    `C-c C-c m` compiles the current markdown buffer and show the HTML output on another buffer.
-*    `C-c C-c p` compiles the current markdown buffer and open the results in browser.
-*    `C-c C-c e` compiles the current file and generates a `.html` with the results.
-*    `C-c C-c v` same as the previous command, but also show the result file on browser.
-*    `C-c C-c w` compiles the file and put the results on the kill ring.
-*    You can see the full list of features in [the official markdown-mode page](http://jblevins.org/projects/markdown-mode/).
-
-### `lang-autoit` (uses a submodule)
-*    Allow syntax highlight for [AutoIt](https://www.autoitscript.com/site/autoit/) scripts.
-*    Requires that you download teh corresponding submodule (see the instalation instructions).
-
-### GTD
-
-It's highly recommended that you at least know how the GTD workflow works and a minimal knowledge of the `org-mode`.
-If you don't know how org-agenda works, please [RTM](http://orgmode.org/manual/index.html#Top). This setup was based on the implementation
-made by [Charles Cave](http://members.optusnet.com.au/~charles57/GTD/gtd_workflow.html).
-
-*    `C-c r c` starts the capture window (globally).
-*    `F7` will open your agenda view.
-*    `C-c C-t` will change the TODO item type.
-*    `C-c C-q` will change the TODO item tags.
 
 ## Maintaining
 
@@ -180,10 +79,14 @@ private repository and change/add/remove what you want in the fork. This way,
 you can have a "backup" of your personal options AND will be able to fetch any
 new features or bug fixes from the original project.
 
+Note that the packages are all *pinned*. If you want to use different versions,
+you can unpin (or put a specific version), and run `M-x dt-install-packages` to
+get the new version. You might want to use `M-x quelpa-self-upgrade` too.
+
 ## Old emacs?
 
-If you insist on using an old version of emacs, you can try to use the "old" code.
-Take a look at the tag `before-el-get`.
+If you insist on using an old version of emacs, you can try to use the (*very*)
+"old" code. Take a look at the tag `before-el-get`.
 
 ## License
 

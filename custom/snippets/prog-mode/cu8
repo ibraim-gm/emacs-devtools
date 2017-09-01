@@ -1,4 +1,0 @@
-# contributor: Rafael Ibraim <ibraim.gm@gmail.com>
-# name: Emacs coding header (utf8-unix)
-# --
-$0 -*- coding:utf-8-unix; -*-
